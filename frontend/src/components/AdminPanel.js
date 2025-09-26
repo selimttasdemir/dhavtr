@@ -1208,7 +1208,7 @@ const AdminPanel = () => {
           </TabsContent>
           
           <TabsContent value="settings" className="mt-6">
-            <SiteSettingsManager />
+            <EnhancedSiteSettingsManager />
           </TabsContent>
           
           <TabsContent value="password" className="mt-6">
