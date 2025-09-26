@@ -99,15 +99,55 @@ class BlogPostCreate(BaseModel):
 class SiteSettings(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     logo_url: str = ""
-    about_company: str = ""
-    about_founder: str = ""
+    # Hero section
+    hero_title_tr: str = ""
+    hero_title_en: str = ""
+    hero_title_de: str = ""
+    hero_title_ru: str = ""
+    hero_subtitle_tr: str = ""
+    hero_subtitle_en: str = ""
+    hero_subtitle_de: str = ""
+    hero_subtitle_ru: str = ""
+    hero_description_tr: str = ""
+    hero_description_en: str = ""
+    hero_description_de: str = ""
+    hero_description_ru: str = ""
+    # About section
+    about_company_tr: str = ""
+    about_company_en: str = ""
+    about_company_de: str = ""
+    about_company_ru: str = ""
+    about_founder_tr: str = ""
+    about_founder_en: str = ""
+    about_founder_de: str = ""
+    about_founder_ru: str = ""
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class SiteSettingsUpdate(BaseModel):
     logo_url: str = ""
-    about_company: str = ""
-    about_founder: str = ""
+    # Hero section
+    hero_title_tr: str = ""
+    hero_title_en: str = ""
+    hero_title_de: str = ""
+    hero_title_ru: str = ""
+    hero_subtitle_tr: str = ""
+    hero_subtitle_en: str = ""
+    hero_subtitle_de: str = ""
+    hero_subtitle_ru: str = ""
+    hero_description_tr: str = ""
+    hero_description_en: str = ""
+    hero_description_de: str = ""
+    hero_description_ru: str = ""
+    # About section
+    about_company_tr: str = ""
+    about_company_en: str = ""
+    about_company_de: str = ""
+    about_company_ru: str = ""
+    about_founder_tr: str = ""
+    about_founder_en: str = ""
+    about_founder_de: str = ""
+    about_founder_ru: str = ""
 
 class AdminUser(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
