@@ -216,6 +216,12 @@ async def check_admin_setup():
     admin_count = await db.admin_users.count_documents({})
     return {"has_admin": admin_count > 0}
 
+@api_router.delete("/admin/reset")
+async def reset_admin():
+    """Reset admin users - for development only"""
+    await db.admin_users.delete_many({})
+    return {"message": "Admin users reset successfully"}
+
 class AdminSetupRequest(BaseModel):
     username: str
     password: str
