@@ -234,14 +234,40 @@ async def setup_admin(username: str, password: str):
     
     return {"message": "Admin user created successfully"}
 
+class AdminSetupRequest(BaseModel):
+    username: str
+    password: str
+
+class AdminLoginRequest(BaseModel):
+    username: str
+    password: str
+
+@api_router.post("/admin/setup")
+async def setup_admin(request: AdminSetupRequest):
+    """Setup initial admin user"""
+    # Check if admin already exists
+    existing_admin = await db.admin_users.find_one({})
+    if existing_admin:
+        raise HTTPException(status_code=400, detail="Admin user already exists")
+    
+    # Simple password hashing (in production, use proper bcrypt)
+    import hashlib
+    password_hash = hashlib.sha256(request.password.encode()).hexdigest()
+    
+    admin_user = AdminUser(username=request.username, password_hash=password_hash)
+    admin_dict = prepare_for_mongo(admin_user.dict())
+    await db.admin_users.insert_one(admin_dict)
+    
+    return {"message": "Admin user created successfully"}
+
 @api_router.post("/admin/login")
-async def admin_login(username: str, password: str):
+async def admin_login(request: AdminLoginRequest):
     """Admin login"""
     import hashlib
-    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    password_hash = hashlib.sha256(request.password.encode()).hexdigest()
     
     admin = await db.admin_users.find_one({
-        "username": username,
+        "username": request.username,
         "password_hash": password_hash,
         "is_active": True
     })
