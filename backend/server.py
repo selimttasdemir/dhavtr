@@ -377,6 +377,96 @@ async def update_site_settings(settings_data: SiteSettingsUpdate):
     updated_settings = await db.site_settings.find_one({})
     return SiteSettings(**parse_from_mongo(updated_settings))
 
+@api_router.post("/admin/change-password")
+async def change_admin_password(request: PasswordChangeRequest):
+    """Change admin password"""
+    # In a real app, you'd get user ID from JWT token
+    # For now, we'll just update the first admin user
+    import hashlib
+    
+    current_password_hash = hashlib.sha256(request.current_password.encode()).hexdigest()
+    admin = await db.admin_users.find_one({
+        "password_hash": current_password_hash,
+        "is_active": True
+    })
+    
+    if not admin:
+        raise HTTPException(status_code=401, detail="Current password is incorrect")
+    
+    new_password_hash = hashlib.sha256(request.new_password.encode()).hexdigest()
+    
+    await db.admin_users.update_one(
+        {"id": admin["id"]},
+        {"$set": {"password_hash": new_password_hash}}
+    )
+    
+    return {"message": "Password changed successfully"}
+
+@api_router.post("/admin/forgot-password")
+async def forgot_password(request: PasswordResetRequest):
+    """Send password reset email"""
+    admin = await db.admin_users.find_one({
+        "username": request.email,
+        "is_active": True
+    })
+    
+    if not admin:
+        # Don't reveal if email exists for security
+        return {"message": "If an account with this email exists, a reset link has been sent"}
+    
+    # Generate reset token
+    reset_token = str(uuid.uuid4())
+    reset_expires = datetime.now(timezone.utc) + timedelta(hours=1)  # 1 hour expiry
+    
+    # Store reset token
+    await db.password_resets.insert_one({
+        "admin_id": admin["id"],
+        "token": reset_token,
+        "expires_at": reset_expires.isoformat(),
+        "used": False
+    })
+    
+    # In a real app, send email here
+    # For demo, just return the reset link
+    reset_link = f"https://hancer-attorney.preview.emergentagent.com/admin/reset-password?token={reset_token}"
+    
+    return {"message": "Reset link sent", "reset_link": reset_link}
+
+@api_router.post("/admin/reset-password")
+async def reset_password(token: str, new_password: str):
+    """Reset password with token"""
+    import hashlib
+    
+    # Find valid reset token
+    reset_record = await db.password_resets.find_one({
+        "token": token,
+        "used": False
+    })
+    
+    if not reset_record:
+        raise HTTPException(status_code=400, detail="Invalid or expired reset token")
+    
+    # Check if token is expired
+    expires_at = datetime.fromisoformat(reset_record["expires_at"])
+    if datetime.now(timezone.utc) > expires_at:
+        raise HTTPException(status_code=400, detail="Reset token has expired")
+    
+    # Update password
+    new_password_hash = hashlib.sha256(new_password.encode()).hexdigest()
+    
+    await db.admin_users.update_one(
+        {"id": reset_record["admin_id"]},
+        {"$set": {"password_hash": new_password_hash}}
+    )
+    
+    # Mark token as used
+    await db.password_resets.update_one(
+        {"_id": reset_record["_id"]},
+        {"$set": {"used": True}}
+    )
+    
+    return {"message": "Password reset successfully"}
+
 # Health check
 @api_router.get("/")
 async def root():
