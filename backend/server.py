@@ -96,6 +96,19 @@ class BlogPostCreate(BaseModel):
     slug: str
     published: bool = True
 
+class SiteSettings(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    logo_url: str = ""
+    about_company: str = ""
+    about_founder: str = ""
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class SiteSettingsUpdate(BaseModel):
+    logo_url: str = ""
+    about_company: str = ""
+    about_founder: str = ""
+
 class AdminUser(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     username: str
