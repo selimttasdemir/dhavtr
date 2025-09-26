@@ -24,6 +24,9 @@ load_dotenv(ROOT_DIR / '.env')
 # Create the main app
 app = FastAPI()
 
+# Mount static files for uploads
+app.mount("/uploads", StaticFiles(directory=f"{ROOT_DIR}/uploads"), name="uploads")
+
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
