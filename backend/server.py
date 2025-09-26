@@ -279,6 +279,39 @@ async def admin_login(request: AdminLoginRequest):
     # In production, return JWT token
     return {"message": "Login successful", "admin_id": admin["id"]}
 
+# Site Settings
+@api_router.get("/settings", response_model=SiteSettings)
+async def get_site_settings():
+    """Get site settings"""
+    settings = await db.site_settings.find_one({})
+    if not settings:
+        # Create default settings if none exist
+        default_settings = SiteSettings(
+            logo_url="https://via.placeholder.com/200x60/1e3a8a/ffffff?text=DH+HUKUK",
+            about_company="DH Hukuk Bürosu, Avukat Deniz HANÇER tarafından kurulmuş olup, İstanbul'da hizmet vermektedir.",
+            about_founder="Deniz HANÇER, hukuk fakültesini onur öğrencisi olarak bitirmiştir."
+        )
+        settings_dict = prepare_for_mongo(default_settings.dict())
+        await db.site_settings.insert_one(settings_dict)
+        return default_settings
+    return SiteSettings(**parse_from_mongo(settings))
+
+@api_router.put("/settings", response_model=SiteSettings)
+async def update_site_settings(settings_data: SiteSettingsUpdate):
+    """Update site settings"""
+    settings_dict = settings_data.dict()
+    settings_dict["updated_at"] = datetime.now(timezone.utc).isoformat()
+    
+    # Try to update existing settings
+    result = await db.site_settings.update_one(
+        {},
+        {"$set": settings_dict},
+        upsert=True
+    )
+    
+    updated_settings = await db.site_settings.find_one({})
+    return SiteSettings(**parse_from_mongo(updated_settings))
+
 # Health check
 @api_router.get("/")
 async def root():
