@@ -149,6 +149,13 @@ class SiteSettingsUpdate(BaseModel):
     about_founder_de: str = ""
     about_founder_ru: str = ""
 
+class PasswordChangeRequest(BaseModel):
+    current_password: str
+    new_password: str
+
+class PasswordResetRequest(BaseModel):
+    email: str
+
 class AdminUser(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     username: str
