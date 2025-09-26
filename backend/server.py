@@ -216,24 +216,6 @@ async def check_admin_setup():
     admin_count = await db.admin_users.count_documents({})
     return {"has_admin": admin_count > 0}
 
-@api_router.post("/admin/setup")
-async def setup_admin(username: str, password: str):
-    """Setup initial admin user"""
-    # Check if admin already exists
-    existing_admin = await db.admin_users.find_one({})
-    if existing_admin:
-        raise HTTPException(status_code=400, detail="Admin user already exists")
-    
-    # Simple password hashing (in production, use proper bcrypt)
-    import hashlib
-    password_hash = hashlib.sha256(password.encode()).hexdigest()
-    
-    admin_user = AdminUser(username=username, password_hash=password_hash)
-    admin_dict = prepare_for_mongo(admin_user.dict())
-    await db.admin_users.insert_one(admin_dict)
-    
-    return {"message": "Admin user created successfully"}
-
 class AdminSetupRequest(BaseModel):
     username: str
     password: str
