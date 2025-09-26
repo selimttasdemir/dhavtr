@@ -864,16 +864,28 @@ const Contact = ({ currentLang }) => {
                     onChange={(e) => handleInputChange('subject', e.target.value)}
                     required
                   />
-                  <Select value={formData.legal_area} onValueChange={(value) => handleInputChange('legal_area', value)}>
+                  <Select value={formData.legal_area} onValueChange={(value) => handleInputChange('legal_area', value)} required>
                     <SelectTrigger>
                       <SelectValue placeholder={t.contact.legal_area} />
                     </SelectTrigger>
                     <SelectContent>
-                      {servicesData.map((service) => (
-                        <SelectItem key={service.id} value={service.title_tr.toLowerCase().replace(/\s+/g, '_')}>
-                          {service[`title_${currentLang}`]}
-                        </SelectItem>
-                      ))}
+                      <SelectItem value="project_financing">Proje Finansmanı</SelectItem>
+                      <SelectItem value="banking_finance">Bankacılık & Finans</SelectItem>
+                      <SelectItem value="corporate_law">Şirketler & Ticaret Hukuku</SelectItem>
+                      <SelectItem value="maritime_law">Deniz Ticareti Hukuku</SelectItem>
+                      <SelectItem value="mergers_acquisitions">Birleşme & Devralmalar</SelectItem>
+                      <SelectItem value="energy_law">Enerji Hukuku</SelectItem>
+                      <SelectItem value="competition_law">Rekabet Hukuku</SelectItem>
+                      <SelectItem value="capital_markets">Sermaye Piyasası Hukuku</SelectItem>
+                      <SelectItem value="dispute_resolution">Dava ve Uyuşmazlık Çözümleri</SelectItem>
+                      <SelectItem value="labor_law">İş Hukuku</SelectItem>
+                      <SelectItem value="compliance">Mevzuata Uyum (KVKK, E-Ticaret)</SelectItem>
+                      <SelectItem value="real_estate">Gayrimenkul Hukuku</SelectItem>
+                      <SelectItem value="restructuring">Yeniden Yapılandırma & İflas/Konkordato</SelectItem>
+                      <SelectItem value="criminal_law">Ceza Hukuku</SelectItem>
+                      <SelectItem value="family_law">Aile Hukuku</SelectItem>
+                      <SelectItem value="administrative_law">İdare Hukuku</SelectItem>
+                      <SelectItem value="immigration_law">Yabancılar Hukuku</SelectItem>
                       <SelectItem value="other">{t.contact.other}</SelectItem>
                     </SelectContent>
                   </Select>
