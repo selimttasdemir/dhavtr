@@ -417,7 +417,7 @@ const SiteSettingsManager = () => {
   );
 };
 
-// Enhanced Password Settings Component
+// Site Settings Manager Component
 const SiteSettingsManager = () => {
   const [settings, setSettings] = useState({
     logo_url: "",
