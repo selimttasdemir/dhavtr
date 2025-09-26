@@ -637,6 +637,30 @@ async def reset_password(token: str, new_password: str, db: AsyncSession = Depen
     
     return {"message": "Password reset successfully"}
 
+# File Upload
+@api_router.post("/upload")
+async def upload_file(file: UploadFile = File(...)):
+    """Upload image file"""
+    # Check file type
+    allowed_extensions = {'.jpg', '.jpeg', '.png', '.webp', '.svg'}
+    file_extension = Path(file.filename).suffix.lower()
+    
+    if file_extension not in allowed_extensions:
+        raise HTTPException(status_code=400, detail="Invalid file type. Only JPG, PNG, WebP, SVG allowed.")
+    
+    # Generate unique filename
+    file_id = str(uuid.uuid4())
+    filename = f"{file_id}{file_extension}"
+    file_path = ROOT_DIR / "uploads" / filename
+    
+    # Save file
+    with open(file_path, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    
+    # Return URL
+    file_url = f"/uploads/{filename}"
+    return {"url": file_url}
+
 # Health check
 @api_router.get("/")
 async def root():
