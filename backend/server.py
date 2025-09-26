@@ -335,8 +335,26 @@ async def get_site_settings():
         # Create default settings if none exist
         default_settings = SiteSettings(
             logo_url="https://via.placeholder.com/200x60/1e3a8a/ffffff?text=DH+HUKUK",
-            about_company="DH Hukuk Bürosu, Avukat Deniz HANÇER tarafından kurulmuş olup, İstanbul'da hizmet vermektedir.",
-            about_founder="Deniz HANÇER, hukuk fakültesini onur öğrencisi olarak bitirmiştir."
+            hero_title_tr="Av. Deniz Hançer",
+            hero_title_en="Atty. Deniz Hançer", 
+            hero_title_de="RA Deniz Hançer",
+            hero_title_ru="Адв. Дениз Ханчер",
+            hero_subtitle_tr="Güvenilir Hukuki Danışmanlık",
+            hero_subtitle_en="Reliable Legal Consulting",
+            hero_subtitle_de="Zuverlässige Rechtsberatung", 
+            hero_subtitle_ru="Надежная юридическая консультация",
+            hero_description_tr="Yıllarca deneyim ile müvekkillerimize en kaliteli hukuki hizmetleri sunuyoruz. Uzman ekibimiz ile her türlü hukuki meselenizde yanınızdayız.",
+            hero_description_en="We provide the highest quality legal services to our clients with years of experience. We are here for all your legal matters with our expert team.",
+            hero_description_de="Wir bieten unseren Mandanten mit jahrelanger Erfahrung hochwertige Rechtsdienstleistungen. Wir stehen Ihnen mit unserem Expertenteam bei allen rechtlichen Angelegenheiten zur Seite.",
+            hero_description_ru="Мы предоставляем нашим клиентам высококачественные юридические услуги с многолетним опытом. Мы готовы помочь вам по всем правовым вопросам с нашей командой экспертов.",
+            about_company_tr="DH Hukuk Bürosu, Avukat Deniz HANÇER tarafından kurulmuş olup, İstanbul'da hizmet vermektedir. Yerli müvekkillerin yanı sıra, yabancı müvekkillere de hizmet vermekte olan ofisimiz; güven, gizlilik ve şeffaf çalışma esaslarına özen göstermektedir.",
+            about_company_en="DH Law Office was established by Attorney Deniz HANÇER and serves in Istanbul. Our office, which serves foreign clients as well as local clients; pays attention to the principles of trust, confidentiality and transparent working.",
+            about_company_de="Die DH-Anwaltskanzlei wurde von Rechtsanwalt Deniz HANÇER gegründet und ist in Istanbul tätig. Unser Büro, das neben lokalen auch ausländische Mandanten betreut, achtet auf die Grundsätze von Vertrauen, Vertraulichkeit und transparenter Arbeitsweise.",
+            about_company_ru="Юридическое бюро DH было создано адвокатом Дениз ХАНЧЕР и работает в Стамбуле. Наш офис, который обслуживает как местных, так и иностранных клиентов, уделяет внимание принципам доверия, конфиденциальности и прозрачной работы.",
+            about_founder_tr="Deniz HANÇER, hukuk fakültesini onur öğrencisi olarak, 3 senede bitirmiş olup; halen İstanbul Üniversitesi Ticaret Hukuku dalında yüksek lisans çalışmalarına devam etmektedir.",
+            about_founder_en="Deniz HANÇER graduated from law school as an honor student in 3 years and is currently continuing his graduate studies in Commercial Law at Istanbul University.",
+            about_founder_de="Deniz HANÇER absolvierte die juristische Fakultät als Ehrenstudent in 3 Jahren und setzt derzeit seine Graduiertenstudien im Handelsrecht an der Universität Istanbul fort.",
+            about_founder_ru="Дениз ХАНЧЕР окончил юридический факультет как студент с отличием за 3 года и в настоящее время продолжает аспирантуру по коммерческому праву в Стамбульском университете."
         )
         settings_dict = prepare_for_mongo(default_settings.dict())
         await db.site_settings.insert_one(settings_dict)
