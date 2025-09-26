@@ -417,8 +417,8 @@ const SiteSettingsManager = () => {
   );
 };
 
-// Enhanced Password Settings Component
-const SiteSettingsManager = () => {
+// Enhanced Site Settings Manager Component
+const EnhancedSiteSettingsManager = () => {
   const [settings, setSettings] = useState({
     logo_url: "",
     hero_title_tr: "",
