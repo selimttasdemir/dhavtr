@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AdminPanel from "./components/AdminPanel";
 import axios from "axios";
 
 // Import shadcn components
