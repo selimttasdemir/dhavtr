@@ -1136,10 +1136,11 @@ const AdminPanel = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="messages" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="messages">Mesajlar</TabsTrigger>
             <TabsTrigger value="blog">Blog Yönetimi</TabsTrigger>
             <TabsTrigger value="settings">Site Ayarları</TabsTrigger>
+            <TabsTrigger value="password">Şifre Ayarları</TabsTrigger>
           </TabsList>
           
           <TabsContent value="messages" className="mt-6">
@@ -1152,6 +1153,10 @@ const AdminPanel = () => {
           
           <TabsContent value="settings" className="mt-6">
             <SiteSettingsManager />
+          </TabsContent>
+          
+          <TabsContent value="password" className="mt-6">
+            <PasswordSettings />
           </TabsContent>
         </Tabs>
       </main>
