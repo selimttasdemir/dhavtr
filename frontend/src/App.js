@@ -28,9 +28,6 @@ const translations = {
       contact: "İletişim"
     },
     home: {
-      hero_title: "Av. Deniz Hançer",
-      hero_subtitle: "Güvenilir Hukuki Danışmanlık",
-      hero_description: "Yıllarca deneyim ile müvekkillerimize en kaliteli hukuki hizmetleri sunuyoruz. Uzman ekibimiz ile her türlü hukuki meselenizde yanınızdayız.",
       contact_btn: "İletişime Geçin",
       services_title: "Hizmetlerimiz",
       why_choose: "Neden Bizi Seçmelisiniz?",
@@ -84,9 +81,6 @@ const translations = {
       contact: "Contact"
     },
     home: {
-      hero_title: "Atty. Deniz Hançer",
-      hero_subtitle: "Reliable Legal Consulting",
-      hero_description: "We provide the highest quality legal services to our clients with years of experience. We are here for all your legal matters with our expert team.",
       contact_btn: "Get in Touch",
       services_title: "Our Services",
       why_choose: "Why Choose Us?",
@@ -140,9 +134,6 @@ const translations = {
       contact: "Kontakt"
     },
     home: {
-      hero_title: "RA Deniz Hançer",
-      hero_subtitle: "Zuverlässige Rechtsberatung",
-      hero_description: "Wir bieten unseren Mandanten mit jahrelanger Erfahrung hochwertige Rechtsdienstleistungen. Wir stehen Ihnen mit unserem Expertenteam bei allen rechtlichen Angelegenheiten zur Seite.",
       contact_btn: "Kontakt aufnehmen",
       services_title: "Unsere Dienstleistungen",
       why_choose: "Warum uns wählen?",
@@ -196,9 +187,6 @@ const translations = {
       contact: "Контакты"
     },
     home: {
-      hero_title: "Адв. Дениз Ханчер",
-      hero_subtitle: "Надежная юридическая консультация",
-      hero_description: "Мы предоставляем нашим клиентам высококачественные юридические услуги с многолетним опытом. Мы готовы помочь вам по всем правовым вопросам с нашей командой экспертов.",
       contact_btn: "Связаться с нами",
       services_title: "Наши услуги",
       why_choose: "Почему выбирают нас?",
@@ -251,7 +239,7 @@ const detectLanguage = () => {
   return ['tr', 'en', 'de', 'ru'].includes(browserLang) ? browserLang : 'tr';
 };
 
-// Services data
+// Complete Services data (17 services)
 const servicesData = [
   {
     id: 1,
@@ -261,8 +249,8 @@ const servicesData = [
     title_ru: "Проектное финансирование",
     description_tr: "Proje finansmanı süreçlerinin yürütülmesi noktasında müvekkillerimize danışmanlık sağlıyoruz. Özellikle yatırım noktasında tıkanmış büyük çaplı projelere doğru aksiyon planları ile etkin çözümler getiriyoruz.",
     description_en: "We provide consultancy to our clients in the execution of project financing processes. We bring effective solutions with proper action plans, especially to large-scale projects stuck in investment.",
-    description_de: "Wir bieten unseren Mandanten Beratung bei der Durchführung von Projektfinanzierungsprozessen. Wir bringen effektive Lösungen mit richtigen Aktionsplänen, insbesondere für große Projekte, die bei Investitionen stecken.",
-    description_ru: "Мы предоставляем консультации нашим клиентам по выполнению процессов проектного финансирования. Мы приносим эффективные решения с правильными планами действий, особенно для крупномасштабных проектов, застрявших в инвестициях."
+    description_de: "Wir bieten unseren Mandanten Beratung bei der Durchführung von Projektfinanzierungsprozessen. Wir bringen effektive Lösungen mit richtigen Aktionsplänen, insbesondere für große Projekte.",
+    description_ru: "Мы предоставляем консультации нашим клиентам по выполнению процессов проектного финансирования."
   },
   {
     id: 2,
@@ -270,9 +258,9 @@ const servicesData = [
     title_en: "Banking & Finance",
     title_de: "Bankwesen & Finanzen",
     title_ru: "Банковское дело и финансы",
-    description_tr: "Bankacılık ve finans sektöründe karmaşık işlemlerde hukuki danışmanlık hizmetleri sunuyoruz.",
-    description_en: "We provide legal consultancy services in complex transactions in the banking and finance sector.",
-    description_de: "Wir bieten Rechtsberatungsdienste für komplexe Transaktionen im Banken- und Finanzsektor.",
+    description_tr: "Bankacılık ve finans sektöründe karmaşık işlemlerde hukuki danışmanlık hizmetleri sunuyoruz. Kredi sözleşmeleri, finansal enstrümanlar ve bankacılık düzenlemeleri konularında uzmanız.",
+    description_en: "We provide legal consultancy services in complex transactions in the banking and finance sector. We specialize in credit agreements, financial instruments and banking regulations.",
+    description_de: "Wir bieten Rechtsberatungsdienste für komplexe Transaktionen im Banken- und Finanzsektor. Wir sind auf Kreditverträge, Finanzinstrumente und Bankvorschriften spezialisiert.",
     description_ru: "Мы предоставляем услуги юридических консультаций по сложным операциям в банковском и финансовом секторе."
   },
   {
@@ -281,10 +269,164 @@ const servicesData = [
     title_en: "Corporate & Commercial Law",
     title_de: "Gesellschafts- & Handelsrecht",
     title_ru: "Корпоративное и коммерческое право",
-    description_tr: "Şirket kuruluşu, birleşme, devralma ve ticari işlemlerde hukuki destek sağlıyoruz.",
-    description_en: "We provide legal support in company establishment, mergers, acquisitions and commercial transactions.",
-    description_de: "Wir bieten Rechtsberatung bei Unternehmensgründung, Fusionen, Übernahmen und Handelsgeschäften.",
+    description_tr: "Şirket kuruluşu, birleşme, devralma ve ticari işlemlerde hukuki destek sağlıyoruz. Kurumsal yönetim, pay devri ve ticari sözleşmeler konularında danışmanlık veriyoruz.",
+    description_en: "We provide legal support in company establishment, mergers, acquisitions and commercial transactions. We provide consultancy on corporate governance, share transfer and commercial contracts.",
+    description_de: "Wir bieten Rechtsberatung bei Unternehmensgründung, Fusionen, Übernahmen und Handelsgeschäften. Wir beraten zu Unternehmensführung, Anteilsübertragung und Handelsverträgen.",
     description_ru: "Мы предоставляем правовую поддержку при создании компаний, слияниях, поглощениях и коммерческих сделках."
+  },
+  {
+    id: 4,
+    title_tr: "Deniz Ticareti Hukuku",
+    title_en: "Maritime Commercial Law",
+    title_de: "Seehandelsrecht",
+    title_ru: "Морское коммерческое право",
+    description_tr: "Gemi alım-satımı, navlun sözleşmeleri, deniz sigortası ve denizcilik uyuşmazlıkları konularında hizmet veriyoruz. Liman işletmeleri ve denizcilik şirketlerine özel danışmanlık sağlıyoruz.",
+    description_en: "We provide services on ship purchase-sale, freight contracts, marine insurance and maritime disputes. We provide special consultancy to port operators and shipping companies.",
+    description_de: "Wir bieten Dienstleistungen für Schiffskauf und -verkauf, Frachtverträge, Seeversicherung und Seestreitigkeiten. Wir beraten Hafenbetreiber und Reedereien.",
+    description_ru: "Мы предоставляем услуги по купле-продаже судов, фрахтовым договорам, морскому страхованию и морским спорам."
+  },
+  {
+    id: 5,
+    title_tr: "Birleşme & Devralmalar",
+    title_en: "Mergers & Acquisitions",
+    title_de: "Fusionen & Übernahmen",
+    title_ru: "Слияния и поглощения",
+    description_tr: "Şirket birleşmeleri, devralmaları ve yapısal dönüşümlerde kapsamlı hukuki danışmanlık sunuyoruz. Due diligence süreçlerinde ve işlem yapılandırmasında rehberlik ediyoruz.",
+    description_en: "We provide comprehensive legal consultancy in company mergers, acquisitions and structural transformations. We guide in due diligence processes and transaction structuring.",
+    description_de: "Wir bieten umfassende Rechtsberatung bei Unternehmensfusionen, Übernahmen und strukturellen Transformationen. Wir leiten Due-Diligence-Prozesse und Transaktionsstrukturen.",
+    description_ru: "Мы предоставляем комплексные юридические консультации по слияниям, поглощениям компаний и структурным преобразованиям."
+  },
+  {
+    id: 6,
+    title_tr: "Enerji Hukuku",
+    title_en: "Energy Law",
+    title_de: "Energierecht",
+    title_ru: "Энергетическое право",
+    description_tr: "Yenilenebilir enerji projeleri, enerji lisansları ve enerji sektöründeki düzenlemeler konusunda uzmanlık sunuyoruz. Güneş, rüzgar ve diğer enerji yatırımlarında danışmanlık veriyoruz.",
+    description_en: "We offer expertise in renewable energy projects, energy licenses and regulations in the energy sector. We provide consultancy on solar, wind and other energy investments.",
+    description_de: "Wir bieten Expertise bei Projekten für erneuerbare Energien, Energielizenzen und Vorschriften im Energiesektor. Wir beraten bei Solar-, Wind- und anderen Energieinvestitionen.",
+    description_ru: "Мы предлагаем экспертизу по проектам возобновляемой энергии, энергетическим лицензиям и регулированию в энергетическом секторе."
+  },
+  {
+    id: 7,
+    title_tr: "Rekabet Hukuku",
+    title_en: "Competition Law",
+    title_de: "Wettbewerbsrecht",
+    title_ru: "Конкурентное право",
+    description_tr: "Rekabet Kurumu önündeki işlemler, hakim durum tespiti ve rekabet hukuku uyuşmazlıklarında deneyimli kadromuzla hizmet veriyoruz. Kartel ve tekel davalarında uzmanız.",
+    description_en: "We serve with our experienced team in procedures before the Competition Authority, determination of dominant position and competition law disputes. We specialize in cartel and monopoly cases.",
+    description_de: "Wir dienen mit unserem erfahrenen Team bei Verfahren vor der Wettbewerbsbehörde, der Bestimmung einer marktbeherrschenden Stellung und wettbewerbsrechtlichen Streitigkeiten.",
+    description_ru: "Мы работаем с нашей опытной командой по процедурам перед органом по конкуренции, определению доминирующего положения и спорам по конкурентному праву."
+  },
+  {
+    id: 8,
+    title_tr: "Sermaye Piyasası Hukuku",
+    title_en: "Capital Markets Law",
+    title_de: "Kapitalmarktrecht",
+    title_ru: "Право рынков капитала",
+    description_tr: "Halka arz işlemleri, sermaye piyasası araçları ve SPK düzenlemeleri konularında hizmet veriyoruz. Yatırım fonları ve portföy yönetimi şirketlerine danışmanlık sağlıyoruz.",
+    description_en: "We provide services on public offerings, capital market instruments and CMB regulations. We provide consultancy to investment funds and portfolio management companies.",
+    description_de: "Wir bieten Dienstleistungen für öffentliche Angebote, Kapitalmarktinstrumente und CMB-Vorschriften. Wir beraten Investmentfonds und Portfolioverwaltungsunternehmen.",
+    description_ru: "Мы предоставляем услуги по публичным предложениям, инструментам рынка капитала и регулированию CMB."
+  },
+  {
+    id: 9,
+    title_tr: "Dava ve Uyuşmazlık Çözümleri",
+    title_en: "Litigation and Dispute Resolution",
+    title_de: "Rechtsstreitigkeiten und Streitbeilegung",
+    title_ru: "Судебные разбирательства и разрешение споров",
+    description_tr: "Ticari davalar, tahkim süreçleri ve alternatif uyuşmazlık çözüm yöntemlerinde deneyimli kadromuzla hizmet veriyoruz. Ulusal ve uluslararası tahkimde temsil ediyoruz.",
+    description_en: "We serve with our experienced team in commercial litigation, arbitration processes and alternative dispute resolution methods. We represent in national and international arbitration.",
+    description_de: "Wir dienen mit unserem erfahrenen Team bei Handelsstreitigkeiten, Schiedsverfahren und alternativen Streitbeilegungsmethoden. Wir vertreten bei nationaler und internationaler Schiedsgerichtsbarkeit.",
+    description_ru: "Мы работаем с нашей опытной командой по коммерческим спорам, арбитражным процессам и альтернативным методам разрешения споров."
+  },
+  {
+    id: 10,
+    title_tr: "İş Hukuku",
+    title_en: "Labor Law",
+    title_de: "Arbeitsrecht",
+    title_ru: "Трудовое право",
+    description_tr: "İş sözleşmeleri, işçi hakları, iş sağlığı ve güvenliği mevzuatı konularında hizmet veriyoruz. İşveren ve işçi temsilcilerine eşit mesafede danışmanlık sağlıyoruz.",
+    description_en: "We provide services on employment contracts, workers' rights, occupational health and safety legislation. We provide equal consultancy to employer and worker representatives.",
+    description_de: "Wir bieten Dienstleistungen zu Arbeitsverträgen, Arbeitnehmerrechten und Arbeitsschutzgesetzgebung. Wir beraten Arbeitgeber- und Arbeitnehmervertreter gleichermaßen.",
+    description_ru: "Мы предоставляем услуги по трудовым договорам, правам работников, законодательству об охране труда и технике безопасности."
+  },
+  {
+    id: 11,
+    title_tr: "Mevzuata Uyum (KVKK, E-Ticaret)",
+    title_en: "Compliance (GDPR, E-Commerce)",
+    title_de: "Compliance (DSGVO, E-Commerce)",
+    title_ru: "Соответствие (GDPR, электронная коммерция)",
+    description_tr: "KVKK uyum süreçleri, e-ticaret mevzuatı ve veri koruma politikaları konularında danışmanlık veriyoruz. Dijital dönüşüm süreçlerinde hukuki rehberlik sağlıyoruz.",
+    description_en: "We provide consultancy on GDPR compliance processes, e-commerce legislation and data protection policies. We provide legal guidance in digital transformation processes.",
+    description_de: "Wir beraten zu DSGVO-Compliance-Prozessen, E-Commerce-Gesetzgebung und Datenschutzrichtlinien. Wir bieten rechtliche Beratung bei digitalen Transformationsprozessen.",
+    description_ru: "Мы консультируем по процессам соответствия GDPR, законодательству электронной коммерции и политикам защиты данных."
+  },
+  {
+    id: 12,
+    title_tr: "Gayrimenkul Hukuku",
+    title_en: "Real Estate Law",
+    title_de: "Immobilienrecht",
+    title_ru: "Право недвижимости",
+    description_tr: "Gayrimenkul alım-satımı, kira sözleşmeleri, kat irtifakı ve tapu işlemleri konularında hizmet veriyoruz. Gayrimenkul yatırım projelerinde hukuki danışmanlık sağlıyoruz.",
+    description_en: "We provide services on real estate purchase-sale, rental agreements, condominium rights and title deed transactions. We provide legal consultancy in real estate investment projects.",
+    description_de: "Wir bieten Dienstleistungen für Immobilienkauf und -verkauf, Mietverträge, Eigentumswohnungsrechte und Grundbuchgeschäfte. Wir beraten bei Immobilieninvestitionsprojekten.",
+    description_ru: "Мы предоставляем услуги по купле-продаже недвижимости, договорам аренды, правам кондоминиума и операциям с правом собственности."
+  },
+  {
+    id: 13,
+    title_tr: "Yeniden Yapılandırma & İflas/Konkordato",
+    title_en: "Restructuring & Bankruptcy/Concordat",
+    title_de: "Umstrukturierung & Insolvenz/Konkordato",
+    title_ru: "Реструктуризация и банкротство/конкордат",
+    description_tr: "Finansal sıkıntı yaşayan şirketlerin yeniden yapılandırma süreçlerinde rehberlik ediyoruz. İflas ve konkordato davalarında deneyimli kadromuzla hizmet veriyoruz.",
+    description_en: "We guide companies experiencing financial distress through restructuring processes. We serve with our experienced team in bankruptcy and concordat cases.",
+    description_de: "Wir begleiten Unternehmen in finanziellen Schwierigkeiten durch Umstrukturierungsprozesse. Wir dienen mit unserem erfahrenen Team bei Insolvenz- und Konkordato-Fällen.",
+    description_ru: "Мы направляем компании, испытывающие финансовые затруднения, через процессы реструктуризации."
+  },
+  {
+    id: 14,
+    title_tr: "Ceza Hukuku",
+    title_en: "Criminal Law",
+    title_de: "Strafrecht",
+    title_ru: "Уголовное право",
+    description_tr: "Beyaz yakalı suçlar, ekonomik suçlar ve ticari ceza davaları konularında hizmet veriyoruz. Şirket yöneticileri ve gerçek kişiler için ceza hukuku danışmanlığı sağlıyoruz.",
+    description_en: "We provide services on white-collar crimes, economic crimes and commercial criminal cases. We provide criminal law consultancy for company executives and individuals.",
+    description_de: "Wir bieten Dienstleistungen zu Wirtschaftskriminalität, Wirtschaftsverbrechen und kommerziellen Strafsachen. Wir beraten Unternehmensführer und Einzelpersonen im Strafrecht.",
+    description_ru: "Мы предоставляем услуги по преступлениям белых воротничков, экономическим преступлениям и коммерческим уголовным делам."
+  },
+  {
+    id: 15,
+    title_tr: "Aile Hukuku",
+    title_en: "Family Law",
+    title_de: "Familienrecht",
+    title_ru: "Семейное право",
+    description_tr: "Boşanma davaları, velayet anlaşmazlıkları, nafaka hesaplamaları ve mal paylaşımı konularında hizmet veriyoruz. Aile içi uyuşmazlıklarda çözüm odaklı yaklaşım sergiliyoruz.",
+    description_en: "We provide services on divorce cases, custody disputes, alimony calculations and property sharing. We adopt a solution-oriented approach in family disputes.",
+    description_de: "Wir bieten Dienstleistungen bei Scheidungsfällen, Sorgerechtsstreitigkeiten, Unterhaltsberechnungen und Vermögensteilung. Wir verfolgen einen lösungsorientierten Ansatz bei Familienstreitigkeiten.",
+    description_ru: "Мы предоставляем услуги по делам о разводе, спорам об опеке, расчетам алиментов и разделу имущества."
+  },
+  {
+    id: 16,
+    title_tr: "İdare Hukuku",
+    title_en: "Administrative Law",
+    title_de: "Verwaltungsrecht",
+    title_ru: "Административное право",
+    description_tr: "İdari işlemler, kamu ihaleleri ve idari yargı süreçlerinde hizmet veriyoruz. Kamu kurumları ile olan uyuşmazlıklarda müvekkillerimizi temsil ediyoruz.",
+    description_en: "We provide services in administrative procedures, public tenders and administrative judicial processes. We represent our clients in disputes with public institutions.",
+    description_de: "Wir bieten Dienstleistungen bei Verwaltungsverfahren, öffentlichen Ausschreibungen und verwaltungsgerichtlichen Verfahren. Wir vertreten unsere Mandanten bei Streitigkeiten mit öffentlichen Einrichtungen.",
+    description_ru: "Мы предоставляем услуги по административным процедурам, государственным тендерам и административным судебным процессам."
+  },
+  {
+    id: 17,
+    title_tr: "Yabancılar Hukuku",
+    title_en: "Immigration Law",
+    title_de: "Ausländerrecht",
+    title_ru: "Иммиграционное право",
+    description_tr: "Oturma izinleri, çalışma izinleri, vatandaşlık başvuruları ve sınır dışı süreçleri konularında hizmet veriyoruz. Yabancı yatırımcılar için kapsamlı danışmanlık sağlıyoruz.",
+    description_en: "We provide services on residence permits, work permits, citizenship applications and deportation processes. We provide comprehensive consultancy for foreign investors.",
+    description_de: "Wir bieten Dienstleistungen zu Aufenthaltsgenehmigungen, Arbeitserlaubnissen, Staatsangehörigkeitsanträgen und Abschiebungsverfahren. Wir beraten ausländische Investoren umfassend.",
+    description_ru: "Мы предоставляем услуги по видам на жительство, разрешениям на работу, заявлениям на гражданство и процедурам депортации."
   }
 ];
 
@@ -336,8 +478,13 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
 };
 
 // Home Component
-const Home = ({ currentLang }) => {
+const Home = ({ currentLang, siteSettings }) => {
   const t = translations[currentLang];
+  
+  // Get hero content from settings or fallback to translations
+  const heroTitle = siteSettings?.[`hero_title_${currentLang}`] || t.home?.hero_title || "Av. Deniz Hançer";
+  const heroSubtitle = siteSettings?.[`hero_subtitle_${currentLang}`] || t.home?.hero_subtitle || "Güvenilir Hukuki Danışmanlık";
+  const heroDescription = siteSettings?.[`hero_description_${currentLang}`] || t.home?.hero_description || "Yıllarca deneyim ile müvekkillerimize en kaliteli hukuki hizmetleri sunuyoruz.";
   
   return (
     <div className="pt-20">
@@ -350,9 +497,9 @@ const Home = ({ currentLang }) => {
           }}
         />
         <div className="relative container mx-auto px-4 text-center text-white">
-          <h1 className="text-6xl font-bold mb-4">{t.home.hero_title}</h1>
-          <p className="text-2xl mb-6">{t.home.hero_subtitle}</p>
-          <p className="text-lg mb-8 max-w-3xl mx-auto">{t.home.hero_description}</p>
+          <h1 className="text-6xl font-bold mb-4">{heroTitle}</h1>
+          <p className="text-2xl mb-6">{heroSubtitle}</p>
+          <p className="text-lg mb-8 max-w-3xl mx-auto">{heroDescription}</p>
           <Button 
             size="lg" 
             className="bg-white text-navy-900 hover:bg-gray-100"
@@ -430,8 +577,8 @@ const About = ({ currentLang, siteSettings }) => {
             <div>
               <h3 className="text-3xl font-bold mb-6 text-navy-900">{t.about.company_title}</h3>
               <div className="text-lg text-gray-600 leading-relaxed space-y-4">
-                {siteSettings?.about_company ? (
-                  siteSettings.about_company.split('\n\n').map((paragraph, index) => (
+                {siteSettings?.[`about_company_${currentLang}`] ? (
+                  siteSettings[`about_company_${currentLang}`].split('\n\n').map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                   ))
                 ) : (
@@ -448,8 +595,8 @@ const About = ({ currentLang, siteSettings }) => {
             <div className="order-2 md:order-1">
               <h3 className="text-3xl font-bold mb-6 text-navy-900">{t.about.founder_title}</h3>
               <div className="text-lg text-gray-600 leading-relaxed space-y-4">
-                {siteSettings?.about_founder ? (
-                  siteSettings.about_founder.split('\n\n').map((paragraph, index) => (
+                {siteSettings?.[`about_founder_${currentLang}`] ? (
+                  siteSettings[`about_founder_${currentLang}`].split('\n\n').map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                   ))
                 ) : (
@@ -471,7 +618,7 @@ const About = ({ currentLang, siteSettings }) => {
   );
 };
 
-// Services Component
+// Services Component (All 17 Services)
 const Services = ({ currentLang }) => {
   const t = translations[currentLang];
   const [flippedCard, setFlippedCard] = useState(null);
@@ -484,28 +631,28 @@ const Services = ({ currentLang }) => {
     <section id="services" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-navy-900">{t.services.title}</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
           {servicesData.map((service) => (
             <div 
               key={service.id} 
-              className="flip-card h-64 cursor-pointer"
+              className="flip-card h-48 cursor-pointer"
               onClick={() => handleCardClick(service.id)}
             >
               <div className={`flip-card-inner ${flippedCard === service.id ? 'flipped' : ''}`}>
                 <div className="flip-card-front">
-                  <Card className="h-full flex items-center justify-center p-6 bg-navy-700 text-white">
-                    <h3 className="text-xl font-semibold text-center">
+                  <Card className="h-full flex items-center justify-center p-4 bg-navy-700 text-white">
+                    <h3 className="text-lg font-semibold text-center">
                       {service[`title_${currentLang}`]}
                     </h3>
                   </Card>
                 </div>
                 <div className="flip-card-back">
-                  <Card className="h-full p-6 flex flex-col justify-center bg-white">
-                    <h4 className="text-lg font-semibold mb-4 text-navy-900">
+                  <Card className="h-full p-4 flex flex-col justify-center bg-white">
+                    <h4 className="text-md font-semibold mb-3 text-navy-900">
                       {service[`title_${currentLang}`]}
                     </h4>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {service[`description_${currentLang}`]}
+                    <p className="text-xs text-gray-600 leading-relaxed">
+                      {service[`description_${currentLang}`].substring(0, 120)}...
                     </p>
                   </Card>
                 </div>
@@ -557,7 +704,7 @@ const Blog = ({ currentLang }) => {
                   <p className="text-gray-600 mb-4 line-clamp-3">
                     {(post[`content_${currentLang}`] || post.content_tr).substring(0, 150)}...
                   </p>
-                  <Link to={`/blog/${post.slug}`}>
+                  <Link to={`/blog/${post.slug}`} target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="sm">
                       {t.blog.read_more}
                     </Button>
@@ -611,9 +758,13 @@ const BlogDetail = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-20">
       <div className="container mx-auto px-4 max-w-4xl">
-        <Link to="/" className="inline-flex items-center text-navy-700 hover:text-navy-900 mb-8">
+        <Button 
+          onClick={() => window.close()} 
+          variant="outline"
+          className="mb-8"
+        >
           ← {t.blog.back_to_blog}
-        </Link>
+        </Button>
         
         <Card>
           <CardHeader>
@@ -718,23 +869,11 @@ const Contact = ({ currentLang }) => {
                       <SelectValue placeholder={t.contact.legal_area} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="project_financing">Proje Finansmanı</SelectItem>
-                      <SelectItem value="banking_finance">Bankacılık & Finans</SelectItem>
-                      <SelectItem value="corporate_law">Şirketler & Ticaret Hukuku</SelectItem>
-                      <SelectItem value="maritime_law">Deniz Ticareti Hukuku</SelectItem>
-                      <SelectItem value="mergers_acquisitions">Birleşme & Devralmalar</SelectItem>
-                      <SelectItem value="energy_law">Enerji Hukuku</SelectItem>
-                      <SelectItem value="competition_law">Rekabet Hukuku</SelectItem>
-                      <SelectItem value="capital_markets">Sermaye Piyasası Hukuku</SelectItem>
-                      <SelectItem value="dispute_resolution">Dava ve Uyuşmazlık Çözümleri</SelectItem>
-                      <SelectItem value="labor_law">İş Hukuku</SelectItem>
-                      <SelectItem value="compliance">Mevzuata Uyum (KVKK, E-Ticaret)</SelectItem>
-                      <SelectItem value="real_estate">Gayrimenkul Hukuku</SelectItem>
-                      <SelectItem value="restructuring">Yeniden Yapılandırma & İflas/Konkordato</SelectItem>
-                      <SelectItem value="criminal_law">Ceza Hukuku</SelectItem>
-                      <SelectItem value="family_law">Aile Hukuku</SelectItem>
-                      <SelectItem value="administrative_law">İdare Hukuku</SelectItem>
-                      <SelectItem value="immigration_law">Yabancılar Hukuku</SelectItem>
+                      {servicesData.map((service) => (
+                        <SelectItem key={service.id} value={service.title_tr.toLowerCase().replace(/\s+/g, '_')}>
+                          {service[`title_${currentLang}`]}
+                        </SelectItem>
+                      ))}
                       <SelectItem value="other">{t.contact.other}</SelectItem>
                     </SelectContent>
                   </Select>
@@ -802,7 +941,8 @@ const Contact = ({ currentLang }) => {
                   style={{border:0}} 
                   allowFullScreen="" 
                   loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade">
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="DH Hukuk Bürosu Konum">
                 </iframe>
               </CardContent>
             </Card>
@@ -844,7 +984,7 @@ const MainWebsite = () => {
     <>
       <Navigation currentLang={currentLang} onLanguageChange={handleLanguageChange} siteSettings={siteSettings} />
       
-      <Home currentLang={currentLang} />
+      <Home currentLang={currentLang} siteSettings={siteSettings} />
       <About currentLang={currentLang} siteSettings={siteSettings} />
       <Services currentLang={currentLang} />
       <Blog currentLang={currentLang} />
@@ -855,11 +995,105 @@ const MainWebsite = () => {
           <p>&copy; 2024 DH Hukuk Bürosu. Tüm hakları saklıdır.</p>
           <p className="mt-2 text-navy-300">hancer.av.tr</p>
           <small className="text-navy-400">
-            Designed by <a href="https://burkutsoft.com" target="_blank" rel="noopener" className="text-orange-400 hover:text-orange-300 no-underline">burkutsoft.com</a>
+            Designed by <a href="https://burkutsoft.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 no-underline">burkutsoft.com</a>
           </small>
         </div>
       </footer>
     </>
+  );
+};
+
+// Password Reset Component
+const PasswordReset = () => {
+  const [urlParams] = useState(new URLSearchParams(window.location.search));
+  const [token] = useState(urlParams.get('token'));
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (newPassword !== confirmPassword) {
+      setMessage('Şifreler eşleşmiyor');
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      setMessage('Şifre en az 6 karakter olmalıdır');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post(`${API}/admin/reset-password?token=${token}&new_password=${newPassword}`);
+      setMessage('Şifreniz başarıyla değiştirildi! Admin paneline giriş yapabilirsiniz.');
+    } catch (error) {
+      setMessage(error.response?.data?.detail || 'Şifre değiştirme başarısız');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (!token) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Card>
+          <CardContent className="p-8 text-center">
+            <p className="text-red-600">Geçersiz şifre sıfırlama bağlantısı</p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle className="text-center text-navy-900">
+            Şifre Sıfırla
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              type="password"
+              placeholder="Yeni Şifre"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+            />
+            <Input
+              type="password"
+              placeholder="Yeni Şifre Tekrar"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            {message && (
+              <p className={`text-sm ${message.includes('başarı') ? 'text-green-600' : 'text-red-600'}`}>
+                {message}
+              </p>
+            )}
+            <Button 
+              type="submit" 
+              className="w-full bg-navy-700 hover:bg-navy-800"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Şifre Değiştiriliyor..." : "Şifreyi Değiştir"}
+            </Button>
+            <div className="text-center">
+              <Link to="/admin" className="text-navy-700 hover:text-navy-900">
+                Admin Paneline Dön
+              </Link>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
@@ -870,6 +1104,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/admin/reset-password" element={<PasswordReset />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/" element={<MainWebsite />} />
         </Routes>
