@@ -34,12 +34,23 @@ class LanguageCode(str, Enum):
     RU = "ru"
 
 class LegalAreaType(str, Enum):
-    FAMILY_LAW = "family_law"
-    COMMERCIAL_LAW = "commercial_law"
-    CRIMINAL_LAW = "criminal_law"
+    PROJECT_FINANCING = "project_financing"
+    BANKING_FINANCE = "banking_finance"
+    CORPORATE_LAW = "corporate_law"
+    MARITIME_LAW = "maritime_law"
+    MERGERS_ACQUISITIONS = "mergers_acquisitions"
+    ENERGY_LAW = "energy_law"
+    COMPETITION_LAW = "competition_law"
+    CAPITAL_MARKETS = "capital_markets"
+    DISPUTE_RESOLUTION = "dispute_resolution"
     LABOR_LAW = "labor_law"
+    COMPLIANCE = "compliance"
     REAL_ESTATE = "real_estate"
-    CONTRACT_LAW = "contract_law"
+    RESTRUCTURING = "restructuring"
+    CRIMINAL_LAW = "criminal_law"
+    FAMILY_LAW = "family_law"
+    ADMINISTRATIVE_LAW = "administrative_law"
+    IMMIGRATION_LAW = "immigration_law"
     OTHER = "other"
 
 class UrgencyLevel(str, Enum):
