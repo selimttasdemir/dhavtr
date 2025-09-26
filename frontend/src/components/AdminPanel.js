@@ -417,6 +417,413 @@ const SiteSettingsManager = () => {
   );
 };
 
+// Site Settings Manager Component
+const SiteSettingsManager = () => {
+  const [settings, setSettings] = useState({
+    logo_url: "",
+    hero_title_tr: "",
+    hero_title_en: "",
+    hero_title_de: "",
+    hero_title_ru: "",
+    hero_subtitle_tr: "",
+    hero_subtitle_en: "",
+    hero_subtitle_de: "",
+    hero_subtitle_ru: "",
+    hero_description_tr: "",
+    hero_description_en: "",
+    hero_description_de: "",
+    hero_description_ru: "",
+    about_company_tr: "",
+    about_company_en: "",
+    about_company_de: "",
+    about_company_ru: "",
+    about_founder_tr: "",
+    about_founder_en: "",
+    about_founder_de: "",
+    about_founder_ru: ""
+  });
+  const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    fetchSettings();
+  }, []);
+
+  const fetchSettings = async () => {
+    try {
+      const response = await axios.get(`${API}/settings`);
+      setSettings({
+        logo_url: response.data.logo_url || "",
+        hero_title_tr: response.data.hero_title_tr || "",
+        hero_title_en: response.data.hero_title_en || "",
+        hero_title_de: response.data.hero_title_de || "",
+        hero_title_ru: response.data.hero_title_ru || "",
+        hero_subtitle_tr: response.data.hero_subtitle_tr || "",
+        hero_subtitle_en: response.data.hero_subtitle_en || "",
+        hero_subtitle_de: response.data.hero_subtitle_de || "",
+        hero_subtitle_ru: response.data.hero_subtitle_ru || "",
+        hero_description_tr: response.data.hero_description_tr || "",
+        hero_description_en: response.data.hero_description_en || "",
+        hero_description_de: response.data.hero_description_de || "",
+        hero_description_ru: response.data.hero_description_ru || "",
+        about_company_tr: response.data.about_company_tr || "",
+        about_company_en: response.data.about_company_en || "",
+        about_company_de: response.data.about_company_de || "",
+        about_company_ru: response.data.about_company_ru || "",
+        about_founder_tr: response.data.about_founder_tr || "",
+        about_founder_en: response.data.about_founder_en || "",
+        about_founder_de: response.data.about_founder_de || "",
+        about_founder_ru: response.data.about_founder_ru || ""
+      });
+    } catch (error) {
+      console.error("Error fetching settings:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await axios.put(`${API}/settings`, settings);
+      alert("Site ayarları başarıyla güncellendi!");
+    } catch (error) {
+      console.error("Error updating settings:", error);
+      alert("Ayarlar güncellenirken hata oluştu");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (field, value) => {
+    setSettings(prev => ({ ...prev, [field]: value }));
+  };
+
+  if (loading) {
+    return <div className="text-center py-8">Ayarlar yükleniyor...</div>;
+  }
+
+  return (
+    <div className="space-y-6">
+      <h3 className="text-2xl font-bold text-navy-900">Site Ayarları</h3>
+      
+      <Card>
+        <CardContent className="p-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Logo */}
+            <div>
+              <label className="block text-sm font-medium mb-2">Logo URL</label>
+              <Input
+                placeholder="https://example.com/logo.png"
+                value={settings.logo_url}
+                onChange={(e) => handleChange('logo_url', e.target.value)}
+              />
+              <p className="text-sm text-gray-500 mt-1">Logo görsel URL'sini buraya girin</p>
+            </div>
+
+            <Separator />
+            
+            {/* Hero Section */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Ana Sayfa Hero Bölümü</h4>
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <Input
+                    placeholder="Hero Başlık (Türkçe)"
+                    value={settings.hero_title_tr}
+                    onChange={(e) => handleChange('hero_title_tr', e.target.value)}
+                  />
+                  <Input
+                    placeholder="Hero Title (English)"
+                    value={settings.hero_title_en}
+                    onChange={(e) => handleChange('hero_title_en', e.target.value)}
+                  />
+                  <Input
+                    placeholder="Hero Titel (Deutsch)"
+                    value={settings.hero_title_de}
+                    onChange={(e) => handleChange('hero_title_de', e.target.value)}
+                  />
+                  <Input
+                    placeholder="Заголовок героя (Русский)"
+                    value={settings.hero_title_ru}
+                    onChange={(e) => handleChange('hero_title_ru', e.target.value)}
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <Input
+                    placeholder="Hero Alt Başlık (Türkçe)"
+                    value={settings.hero_subtitle_tr}
+                    onChange={(e) => handleChange('hero_subtitle_tr', e.target.value)}
+                  />
+                  <Input
+                    placeholder="Hero Subtitle (English)"
+                    value={settings.hero_subtitle_en}
+                    onChange={(e) => handleChange('hero_subtitle_en', e.target.value)}
+                  />
+                  <Input
+                    placeholder="Hero Untertitel (Deutsch)"
+                    value={settings.hero_subtitle_de}
+                    onChange={(e) => handleChange('hero_subtitle_de', e.target.value)}
+                  />
+                  <Input
+                    placeholder="Подзаголовок героя (Русский)"
+                    value={settings.hero_subtitle_ru}
+                    onChange={(e) => handleChange('hero_subtitle_ru', e.target.value)}
+                  />
+                </div>
+                
+                <div className="grid grid-cols-1 gap-4">
+                  <Textarea
+                    placeholder="Hero Açıklama (Türkçe)"
+                    value={settings.hero_description_tr}
+                    onChange={(e) => handleChange('hero_description_tr', e.target.value)}
+                    rows="3"
+                  />
+                  <Textarea
+                    placeholder="Hero Description (English)"
+                    value={settings.hero_description_en}
+                    onChange={(e) => handleChange('hero_description_en', e.target.value)}
+                    rows="3"
+                  />
+                  <Textarea
+                    placeholder="Hero Beschreibung (Deutsch)"
+                    value={settings.hero_description_de}
+                    onChange={(e) => handleChange('hero_description_de', e.target.value)}
+                    rows="3"
+                  />
+                  <Textarea
+                    placeholder="Описание героя (Русский)"
+                    value={settings.hero_description_ru}
+                    onChange={(e) => handleChange('hero_description_ru', e.target.value)}
+                    rows="3"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <Separator />
+            
+            {/* About Company */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Hakkımızda - Şirket Bilgileri</h4>
+              <div className="grid grid-cols-1 gap-4">
+                <Textarea
+                  placeholder="Şirket bilgileri (Türkçe)"
+                  value={settings.about_company_tr}
+                  onChange={(e) => handleChange('about_company_tr', e.target.value)}
+                  rows="6"
+                />
+                <Textarea
+                  placeholder="Company information (English)"
+                  value={settings.about_company_en}
+                  onChange={(e) => handleChange('about_company_en', e.target.value)}
+                  rows="6"
+                />
+                <Textarea
+                  placeholder="Unternehmensinformationen (Deutsch)"
+                  value={settings.about_company_de}
+                  onChange={(e) => handleChange('about_company_de', e.target.value)}
+                  rows="6"
+                />
+                <Textarea
+                  placeholder="Информация о компании (Русский)"
+                  value={settings.about_company_ru}
+                  onChange={(e) => handleChange('about_company_ru', e.target.value)}
+                  rows="6"
+                />
+              </div>
+            </div>
+
+            <Separator />
+            
+            {/* About Founder */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Hakkımızda - Kurucu Bilgileri</h4>
+              <div className="grid grid-cols-1 gap-4">
+                <Textarea
+                  placeholder="Kurucu bilgileri (Türkçe)"
+                  value={settings.about_founder_tr}
+                  onChange={(e) => handleChange('about_founder_tr', e.target.value)}
+                  rows="6"
+                />
+                <Textarea
+                  placeholder="Founder information (English)"
+                  value={settings.about_founder_en}
+                  onChange={(e) => handleChange('about_founder_en', e.target.value)}
+                  rows="6"
+                />
+                <Textarea
+                  placeholder="Gründerinformationen (Deutsch)"
+                  value={settings.about_founder_de}
+                  onChange={(e) => handleChange('about_founder_de', e.target.value)}
+                  rows="6"
+                />
+                <Textarea
+                  placeholder="Информация об основателе (Русский)"
+                  value={settings.about_founder_ru}
+                  onChange={(e) => handleChange('about_founder_ru', e.target.value)}
+                  rows="6"
+                />
+              </div>
+            </div>
+            
+            <Button 
+              type="submit" 
+              className="bg-navy-700 hover:bg-navy-800"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Güncelleniyor..." : "Ayarları Kaydet"}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+// Password Settings Component
+const PasswordSettings = () => {
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [forgotEmail, setForgotEmail] = useState('deniz@hancer.av.tr');
+  const [isChanging, setIsChanging] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const handlePasswordChange = async (e) => {
+    e.preventDefault();
+    
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      setMessage('Yeni şifreler eşleşmiyor');
+      return;
+    }
+
+    if (passwordData.newPassword.length < 6) {
+      setMessage('Yeni şifre en az 6 karakter olmalıdır');
+      return;
+    }
+
+    setIsChanging(true);
+    setMessage('');
+
+    try {
+      await axios.post(`${API}/admin/change-password`, {
+        current_password: passwordData.currentPassword,
+        new_password: passwordData.newPassword
+      });
+      
+      setMessage('Şifre başarıyla değiştirildi!');
+      setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+    } catch (error) {
+      setMessage(error.response?.data?.detail || 'Şifre değiştirme başarısız');
+    } finally {
+      setIsChanging(false);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    setIsSending(true);
+    setMessage('');
+
+    try {
+      const response = await axios.post(`${API}/admin/forgot-password`, {
+        email: forgotEmail
+      });
+      
+      if (response.data.reset_link) {
+        setMessage(`Şifre sıfırlama linki: ${response.data.reset_link}`);
+      } else {
+        setMessage('Şifre sıfırlama linki gönderildi (gerçek uygulamada e-posta ile gelecek)');
+      }
+    } catch (error) {
+      setMessage('Şifre sıfırlama başarısız');
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  return (
+    <div className="space-y-8">
+      <h3 className="text-2xl font-bold text-navy-900">Şifre Yönetimi</h3>
+      
+      {/* Change Password */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Şifre Değiştir</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handlePasswordChange} className="space-y-4">
+            <Input
+              type="password"
+              placeholder="Mevcut Şifre"
+              value={passwordData.currentPassword}
+              onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
+              required
+            />
+            <Input
+              type="password"
+              placeholder="Yeni Şifre"
+              value={passwordData.newPassword}
+              onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
+              required
+            />
+            <Input
+              type="password"
+              placeholder="Yeni Şifre Tekrar"
+              value={passwordData.confirmPassword}
+              onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+              required
+            />
+            {message && (
+              <p className={`text-sm ${message.includes('başarı') ? 'text-green-600' : 'text-red-600'}`}>
+                {message}
+              </p>
+            )}
+            <Button 
+              type="submit" 
+              className="bg-navy-700 hover:bg-navy-800"
+              disabled={isChanging}
+            >
+              {isChanging ? "Değiştiriliyor..." : "Şifreyi Değiştir"}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+
+      {/* Forgot Password */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Şifremi Unuttum</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <Input
+              type="email"
+              placeholder="E-posta Adresi"
+              value={forgotEmail}
+              onChange={(e) => setForgotEmail(e.target.value)}
+              disabled
+            />
+            <Button 
+              onClick={handleForgotPassword}
+              variant="outline"
+              disabled={isSending}
+            >
+              {isSending ? "Gönderiliyor..." : "Şifre Sıfırlama Linki Gönder"}
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
 // Blog Manager Component
 const BlogManager = () => {
   const [posts, setPosts] = useState([]);
