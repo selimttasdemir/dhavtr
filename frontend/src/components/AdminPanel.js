@@ -314,6 +314,109 @@ const MessagesManager = () => {
   );
 };
 
+// Site Settings Manager Component
+const SiteSettingsManager = () => {
+  const [settings, setSettings] = useState({
+    logo_url: "",
+    about_company: "",
+    about_founder: ""
+  });
+  const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    fetchSettings();
+  }, []);
+
+  const fetchSettings = async () => {
+    try {
+      const response = await axios.get(`${API}/settings`);
+      setSettings({
+        logo_url: response.data.logo_url,
+        about_company: response.data.about_company,
+        about_founder: response.data.about_founder
+      });
+    } catch (error) {
+      console.error("Error fetching settings:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await axios.put(`${API}/settings`, settings);
+      alert("Site ayarları başarıyla güncellendi!");
+    } catch (error) {
+      console.error("Error updating settings:", error);
+      alert("Ayarlar güncellenirken hata oluştu");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (field, value) => {
+    setSettings(prev => ({ ...prev, [field]: value }));
+  };
+
+  if (loading) {
+    return <div className="text-center py-8">Ayarlar yükleniyor...</div>;
+  }
+
+  return (
+    <div className="space-y-6">
+      <h3 className="text-2xl font-bold text-navy-900">Site Ayarları</h3>
+      
+      <Card>
+        <CardContent className="p-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium mb-2">Logo URL</label>
+              <Input
+                placeholder="https://example.com/logo.png"
+                value={settings.logo_url}
+                onChange={(e) => handleChange('logo_url', e.target.value)}
+              />
+              <p className="text-sm text-gray-500 mt-1">Logo görsel URL'sini buraya girin</p>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium mb-2">Hakkımızda - Şirket Bilgileri</label>
+              <Textarea
+                placeholder="DH Hukuk Bürosu hakkında bilgiler..."
+                value={settings.about_company}
+                onChange={(e) => handleChange('about_company', e.target.value)}
+                rows="8"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium mb-2">Hakkımızda - Kurucu Bilgileri</label>
+              <Textarea
+                placeholder="Av. Deniz Hançer hakkında bilgiler..."
+                value={settings.about_founder}
+                onChange={(e) => handleChange('about_founder', e.target.value)}
+                rows="8"
+              />
+            </div>
+            
+            <Button 
+              type="submit" 
+              className="bg-navy-700 hover:bg-navy-800"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Güncelleniyor..." : "Ayarları Kaydet"}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
 // Blog Manager Component
 const BlogManager = () => {
   const [posts, setPosts] = useState([]);
