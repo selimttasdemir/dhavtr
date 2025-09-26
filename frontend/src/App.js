@@ -654,20 +654,29 @@ function App() {
   
   return (
     <div className="App">
-      <Navigation currentLang={currentLang} onLanguageChange={handleLanguageChange} />
-      
-      <Home currentLang={currentLang} />
-      <About currentLang={currentLang} />
-      <Services currentLang={currentLang} />
-      <Blog currentLang={currentLang} />
-      <Contact currentLang={currentLang} />
-      
-      <footer className="bg-navy-900 text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 Av. Deniz Hançer. Tüm hakları saklıdır.</p>
-          <p className="mt-2 text-navy-300">hancer.av.tr</p>
-        </div>
-      </footer>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/" element={
+            <>
+              <Navigation currentLang={currentLang} onLanguageChange={handleLanguageChange} />
+              
+              <Home currentLang={currentLang} />
+              <About currentLang={currentLang} />
+              <Services currentLang={currentLang} />
+              <Blog currentLang={currentLang} />
+              <Contact currentLang={currentLang} />
+              
+              <footer className="bg-navy-900 text-white py-8">
+                <div className="container mx-auto px-4 text-center">
+                  <p>&copy; 2024 Av. Deniz Hançer. Tüm hakları saklıdır.</p>
+                  <p className="mt-2 text-navy-300">hancer.av.tr</p>
+                </div>
+              </footer>
+            </>
+          } />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
