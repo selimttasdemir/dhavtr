@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AdminPanel from "./components/AdminPanel";
+import { BrowserRouter, Routes, Route, useParams, Link } from "react-router-dom";
 import axios from "axios";
+import AdminPanel from "./components/AdminPanel";
 
 // Import shadcn components
 import { Button } from "./components/ui/button";
@@ -42,17 +42,13 @@ const translations = {
       expertise_desc: "Farklı hukuk alanlarında uzman kadromuz"
     },
     about: {
-      title: "Hakkımda",
-      content: "Av. Deniz Hançer olarak, hukuk alanında yıllarca edindiğim deneyim ile müvekkillerimize en kaliteli hizmetleri sunmaya devam ediyorum. Müvekkil memnuniyetini ön planda tutarak, her davaya özel çözümler üretiyorum."
+      title: "Hakkımızda",
+      company_title: "DH Hukuk Bürosu",
+      founder_title: "Kurucumuz"
     },
     services: {
-      title: "Uzmanlık Alanlarımız",
-      family_law: "Aile Hukuku",
-      commercial_law: "Ticaret Hukuku", 
-      criminal_law: "Ceza Hukuku",
-      labor_law: "İş Hukuku",
-      real_estate: "Gayrimenkul Hukuku",
-      contract_law: "Sözleşme Hukuku"
+      title: "Hizmetlerimiz",
+      back_to_services: "Hizmetlere Geri Dön"
     },
     contact: {
       title: "İletişim",
@@ -69,11 +65,14 @@ const translations = {
       urgency_medium: "Orta",
       urgency_high: "Yüksek", 
       urgency_urgent: "Acil",
-      other: "Diğer"
+      other: "Diğer",
+      contact_info: "İletişim Bilgileri",
+      location: "Konum"
     },
     blog: {
       title: "Blog",
-      read_more: "Devamını Oku"
+      read_more: "Devamını Oku",
+      back_to_blog: "Bloga Geri Dön"
     }
   },
   en: {
@@ -99,17 +98,13 @@ const translations = {
       expertise_desc: "Our expert staff in different areas of law"
     },
     about: {
-      title: "About Me",
-      content: "As Atty. Deniz Hançer, I continue to provide the highest quality services to my clients with the experience I have gained in the field of law for years. By prioritizing client satisfaction, I produce special solutions for each case."
+      title: "About Us",
+      company_title: "DH Law Office",
+      founder_title: "Our Founder"
     },
     services: {
-      title: "Areas of Expertise",
-      family_law: "Family Law",
-      commercial_law: "Commercial Law",
-      criminal_law: "Criminal Law", 
-      labor_law: "Labor Law",
-      real_estate: "Real Estate Law",
-      contract_law: "Contract Law"
+      title: "Our Services",
+      back_to_services: "Back to Services"
     },
     contact: {
       title: "Contact",
@@ -126,17 +121,20 @@ const translations = {
       urgency_medium: "Medium", 
       urgency_high: "High",
       urgency_urgent: "Urgent",
-      other: "Other"
+      other: "Other",
+      contact_info: "Contact Information",
+      location: "Location"
     },
     blog: {
       title: "Blog",
-      read_more: "Read More"
+      read_more: "Read More",
+      back_to_blog: "Back to Blog"
     }
   },
   de: {
     nav: {
       home: "Startseite",
-      about: "Über mich",
+      about: "Über uns",
       services: "Dienstleistungen",
       blog: "Blog", 
       contact: "Kontakt"
@@ -156,17 +154,13 @@ const translations = {
       expertise_desc: "Unser Expertenteam in verschiedenen Rechtsbereichen"
     },
     about: {
-      title: "Über mich",
-      content: "Als RA Deniz Hançer biete ich meinen Mandanten weiterhin hochwertige Dienstleistungen mit der Erfahrung, die ich im Rechtsbereich seit Jahren gesammelt habe. Mit Fokus auf Mandantenzufriedenheit entwickle ich spezielle Lösungen für jeden Fall."
+      title: "Über uns",
+      company_title: "DH Rechtsanwaltskanzlei",
+      founder_title: "Unser Gründer"
     },
     services: {
-      title: "Fachbereiche",
-      family_law: "Familienrecht",
-      commercial_law: "Handelsrecht",
-      criminal_law: "Strafrecht",
-      labor_law: "Arbeitsrecht", 
-      real_estate: "Immobilienrecht",
-      contract_law: "Vertragsrecht"
+      title: "Unsere Dienstleistungen",
+      back_to_services: "Zurück zu Dienstleistungen"
     },
     contact: {
       title: "Kontakt",
@@ -183,17 +177,20 @@ const translations = {
       urgency_medium: "Mittel",
       urgency_high: "Hoch",
       urgency_urgent: "Dringend",
-      other: "Andere"
+      other: "Andere",
+      contact_info: "Kontaktinformationen",
+      location: "Standort"
     },
     blog: {
       title: "Blog",
-      read_more: "Mehr lesen"
+      read_more: "Mehr lesen",
+      back_to_blog: "Zurück zum Blog"
     }
   },
   ru: {
     nav: {
       home: "Главная",
-      about: "Обо мне",
+      about: "О нас",
       services: "Услуги",
       blog: "Блог",
       contact: "Контакты"
@@ -213,17 +210,13 @@ const translations = {
       expertise_desc: "Наша команда экспертов в различных областях права"
     },
     about: {
-      title: "Обо мне",
-      content: "Как адвокат Дениз Ханчер, я продолжаю предоставлять своим клиентам высококачественные услуги с опытом, накопленным в области права в течение многих лет. Уделяя приоритетное внимание удовлетворенности клиентов, я разрабатываю специальные решения для каждого дела."
+      title: "О нас",
+      company_title: "Юридическое бюро DH",
+      founder_title: "Наш основатель"
     },
     services: {
-      title: "Области экспертизы",
-      family_law: "Семейное право",
-      commercial_law: "Коммерческое право",
-      criminal_law: "Уголовное право",
-      labor_law: "Трудовое право",
-      real_estate: "Право недвижимости",
-      contract_law: "Договорное право"
+      title: "Наши услуги",
+      back_to_services: "Обратно к услугам"
     },
     contact: {
       title: "Контакты",
@@ -240,11 +233,14 @@ const translations = {
       urgency_medium: "Средний",
       urgency_high: "Высокий",
       urgency_urgent: "Срочный",
-      other: "Другое"
+      other: "Другое",
+      contact_info: "Контактная информация",
+      location: "Местоположение"
     },
     blog: {
       title: "Блог",
-      read_more: "Читать далее"
+      read_more: "Читать далее",
+      back_to_blog: "Обратно к блогу"
     }
   }
 };
@@ -255,15 +251,62 @@ const detectLanguage = () => {
   return ['tr', 'en', 'de', 'ru'].includes(browserLang) ? browserLang : 'tr';
 };
 
+// Services data
+const servicesData = [
+  {
+    id: 1,
+    title_tr: "Proje Finansmanı",
+    title_en: "Project Financing",
+    title_de: "Projektfinanzierung", 
+    title_ru: "Проектное финансирование",
+    description_tr: "Proje finansmanı süreçlerinin yürütülmesi noktasında müvekkillerimize danışmanlık sağlıyoruz. Özellikle yatırım noktasında tıkanmış büyük çaplı projelere doğru aksiyon planları ile etkin çözümler getiriyoruz.",
+    description_en: "We provide consultancy to our clients in the execution of project financing processes. We bring effective solutions with proper action plans, especially to large-scale projects stuck in investment.",
+    description_de: "Wir bieten unseren Mandanten Beratung bei der Durchführung von Projektfinanzierungsprozessen. Wir bringen effektive Lösungen mit richtigen Aktionsplänen, insbesondere für große Projekte, die bei Investitionen stecken.",
+    description_ru: "Мы предоставляем консультации нашим клиентам по выполнению процессов проектного финансирования. Мы приносим эффективные решения с правильными планами действий, особенно для крупномасштабных проектов, застрявших в инвестициях."
+  },
+  {
+    id: 2,
+    title_tr: "Bankacılık & Finans",
+    title_en: "Banking & Finance",
+    title_de: "Bankwesen & Finanzen",
+    title_ru: "Банковское дело и финансы",
+    description_tr: "Bankacılık ve finans sektöründe karmaşık işlemlerde hukuki danışmanlık hizmetleri sunuyoruz.",
+    description_en: "We provide legal consultancy services in complex transactions in the banking and finance sector.",
+    description_de: "Wir bieten Rechtsberatungsdienste für komplexe Transaktionen im Banken- und Finanzsektor.",
+    description_ru: "Мы предоставляем услуги юридических консультаций по сложным операциям в банковском и финансовом секторе."
+  },
+  {
+    id: 3,
+    title_tr: "Şirketler & Ticaret Hukuku",
+    title_en: "Corporate & Commercial Law",
+    title_de: "Gesellschafts- & Handelsrecht",
+    title_ru: "Корпоративное и коммерческое право",
+    description_tr: "Şirket kuruluşu, birleşme, devralma ve ticari işlemlerde hukuki destek sağlıyoruz.",
+    description_en: "We provide legal support in company establishment, mergers, acquisitions and commercial transactions.",
+    description_de: "Wir bieten Rechtsberatung bei Unternehmensgründung, Fusionen, Übernahmen und Handelsgeschäften.",
+    description_ru: "Мы предоставляем правовую поддержку при создании компаний, слияниях, поглощениях и коммерческих сделках."
+  }
+];
+
 // Navigation Component
-const Navigation = ({ currentLang, onLanguageChange }) => {
+const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
   const t = translations[currentLang];
   
   return (
     <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-navy-900">
-          Av. Deniz Hançer
+        <div className="flex items-center space-x-3">
+          {siteSettings?.logo_url ? (
+            <img 
+              src={siteSettings.logo_url} 
+              alt="DH Hukuk Logo" 
+              className="h-12 object-contain"
+            />
+          ) : (
+            <div className="text-2xl font-bold text-navy-900">
+              DH Hukuk
+            </div>
+          )}
         </div>
         
         <div className="hidden md:flex space-x-8">
@@ -366,32 +409,60 @@ const Home = ({ currentLang }) => {
 };
 
 // About Component
-const About = ({ currentLang }) => {
+const About = ({ currentLang, siteSettings }) => {
   const t = translations[currentLang];
   
   return (
     <section id="about" className="py-20">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <img 
-              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxsYXd5ZXJ8ZW58MHx8fHwxNzU4ODYzMzIxfDA&ixlib=rb-4.1.0&q=85"
-              alt="Av. Deniz Hançer"
-              className="rounded-lg shadow-lg w-full"
-            />
+        <h2 className="text-4xl font-bold text-center mb-16 text-navy-900">{t.about.title}</h2>
+        
+        <div className="space-y-12">
+          {/* Company Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxsYXd5ZXJ8ZW58MHx8fHwxNzU4ODYzMzIxfDA&ixlib=rb-4.1.0&q=85"
+                alt="DH Hukuk Bürosu"
+                className="rounded-lg shadow-lg w-full"
+              />
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold mb-6 text-navy-900">{t.about.company_title}</h3>
+              <div className="text-lg text-gray-600 leading-relaxed space-y-4">
+                {siteSettings?.about_company ? (
+                  siteSettings.about_company.split('\n\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))
+                ) : (
+                  <p>DH Hukuk Bürosu, Avukat Deniz HANÇER tarafından kurulmuş olup, İstanbul'da hizmet vermektedir.</p>
+                )}
+              </div>
+            </div>
           </div>
-          <div>
-            <h2 className="text-4xl font-bold mb-6 text-navy-900">{t.about.title}</h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">{t.about.content}</p>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-navy-600 rounded-full"></div>
-                <span className="text-gray-700">deniz@hancer.av.tr</span>
+
+          <Separator />
+
+          {/* Founder Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <h3 className="text-3xl font-bold mb-6 text-navy-900">{t.about.founder_title}</h3>
+              <div className="text-lg text-gray-600 leading-relaxed space-y-4">
+                {siteSettings?.about_founder ? (
+                  siteSettings.about_founder.split('\n\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))
+                ) : (
+                  <p>Deniz HANÇER, hukuk fakültesini onur öğrencisi olarak bitirmiştir.</p>
+                )}
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-navy-600 rounded-full"></div>
-                <span className="text-gray-700">05334445566</span>
-              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <img 
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxsYXd5ZXJ8ZW58MHx8fHwxNzU4ODYzMzIxfDA&ixlib=rb-4.1.0&q=85"
+                alt="Av. Deniz Hançer"
+                className="rounded-lg shadow-lg w-full"
+              />
             </div>
           </div>
         </div>
@@ -403,28 +474,43 @@ const About = ({ currentLang }) => {
 // Services Component
 const Services = ({ currentLang }) => {
   const t = translations[currentLang];
+  const [flippedCard, setFlippedCard] = useState(null);
   
-  const services = [
-    { key: 'family_law', icon: '👨‍👩‍👧‍👦' },
-    { key: 'commercial_law', icon: '🏢' },
-    { key: 'criminal_law', icon: '⚖️' },
-    { key: 'labor_law', icon: '👔' },
-    { key: 'real_estate', icon: '🏠' },
-    { key: 'contract_law', icon: '📝' }
-  ];
-  
+  const handleCardClick = (serviceId) => {
+    setFlippedCard(flippedCard === serviceId ? null : serviceId);
+  };
+
   return (
     <section id="services" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-navy-900">{t.services.title}</h2>
         <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <Card key={service.key} className="text-center p-6 hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold text-navy-900">{t.services[service.key]}</h3>
-              </CardContent>
-            </Card>
+          {servicesData.map((service) => (
+            <div 
+              key={service.id} 
+              className="flip-card h-64 cursor-pointer"
+              onClick={() => handleCardClick(service.id)}
+            >
+              <div className={`flip-card-inner ${flippedCard === service.id ? 'flipped' : ''}`}>
+                <div className="flip-card-front">
+                  <Card className="h-full flex items-center justify-center p-6 bg-navy-700 text-white">
+                    <h3 className="text-xl font-semibold text-center">
+                      {service[`title_${currentLang}`]}
+                    </h3>
+                  </Card>
+                </div>
+                <div className="flip-card-back">
+                  <Card className="h-full p-6 flex flex-col justify-center bg-white">
+                    <h4 className="text-lg font-semibold mb-4 text-navy-900">
+                      {service[`title_${currentLang}`]}
+                    </h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {service[`description_${currentLang}`]}
+                    </p>
+                  </Card>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -471,9 +557,11 @@ const Blog = ({ currentLang }) => {
                   <p className="text-gray-600 mb-4 line-clamp-3">
                     {(post[`content_${currentLang}`] || post.content_tr).substring(0, 150)}...
                   </p>
-                  <Button variant="outline" size="sm">
-                    {t.blog.read_more}
-                  </Button>
+                  <Link to={`/blog/${post.slug}`}>
+                    <Button variant="outline" size="sm">
+                      {t.blog.read_more}
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))
@@ -481,6 +569,73 @@ const Blog = ({ currentLang }) => {
         </div>
       </div>
     </section>
+  );
+};
+
+// Blog Detail Component
+const BlogDetail = () => {
+  const { slug } = useParams();
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [currentLang, setCurrentLang] = useState(() => {
+    const saved = localStorage.getItem('preferred-language');
+    return saved || detectLanguage();
+  });
+
+  useEffect(() => {
+    fetchPost();
+  }, [slug]);
+
+  const fetchPost = async () => {
+    try {
+      const response = await axios.get(`${API}/blog`);
+      const foundPost = response.data.find(p => p.slug === slug);
+      setPost(foundPost);
+    } catch (error) {
+      console.error('Error fetching post:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center">Yükleniyor...</div>;
+  }
+
+  if (!post) {
+    return <div className="min-h-screen flex items-center justify-center">Blog yazısı bulunamadı.</div>;
+  }
+
+  const t = translations[currentLang];
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-20">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <Link to="/" className="inline-flex items-center text-navy-700 hover:text-navy-900 mb-8">
+          ← {t.blog.back_to_blog}
+        </Link>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-3xl text-navy-900">
+              {post[`title_${currentLang}`] || post.title_tr}
+            </CardTitle>
+            <p className="text-gray-500">
+              {new Date(post.created_at).toLocaleDateString('tr-TR')}
+            </p>
+          </CardHeader>
+          <CardContent>
+            <div className="prose prose-lg max-w-none">
+              {(post[`content_${currentLang}`] || post.content_tr).split('\n').map((paragraph, index) => (
+                <p key={index} className="mb-4 text-gray-700 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
 };
 
@@ -563,12 +718,23 @@ const Contact = ({ currentLang }) => {
                       <SelectValue placeholder={t.contact.legal_area} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="family_law">{t.services.family_law}</SelectItem>
-                      <SelectItem value="commercial_law">{t.services.commercial_law}</SelectItem>
-                      <SelectItem value="criminal_law">{t.services.criminal_law}</SelectItem>
-                      <SelectItem value="labor_law">{t.services.labor_law}</SelectItem>
-                      <SelectItem value="real_estate">{t.services.real_estate}</SelectItem>
-                      <SelectItem value="contract_law">{t.services.contract_law}</SelectItem>
+                      <SelectItem value="project_financing">Proje Finansmanı</SelectItem>
+                      <SelectItem value="banking_finance">Bankacılık & Finans</SelectItem>
+                      <SelectItem value="corporate_law">Şirketler & Ticaret Hukuku</SelectItem>
+                      <SelectItem value="maritime_law">Deniz Ticareti Hukuku</SelectItem>
+                      <SelectItem value="mergers_acquisitions">Birleşme & Devralmalar</SelectItem>
+                      <SelectItem value="energy_law">Enerji Hukuku</SelectItem>
+                      <SelectItem value="competition_law">Rekabet Hukuku</SelectItem>
+                      <SelectItem value="capital_markets">Sermaye Piyasası Hukuku</SelectItem>
+                      <SelectItem value="dispute_resolution">Dava ve Uyuşmazlık Çözümleri</SelectItem>
+                      <SelectItem value="labor_law">İş Hukuku</SelectItem>
+                      <SelectItem value="compliance">Mevzuata Uyum (KVKK, E-Ticaret)</SelectItem>
+                      <SelectItem value="real_estate">Gayrimenkul Hukuku</SelectItem>
+                      <SelectItem value="restructuring">Yeniden Yapılandırma & İflas/Konkordato</SelectItem>
+                      <SelectItem value="criminal_law">Ceza Hukuku</SelectItem>
+                      <SelectItem value="family_law">Aile Hukuku</SelectItem>
+                      <SelectItem value="administrative_law">İdare Hukuku</SelectItem>
+                      <SelectItem value="immigration_law">Yabancılar Hukuku</SelectItem>
                       <SelectItem value="other">{t.contact.other}</SelectItem>
                     </SelectContent>
                   </Select>
@@ -605,7 +771,7 @@ const Contact = ({ currentLang }) => {
           <div className="space-y-8">
             <Card>
               <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4 text-navy-900">İletişim Bilgileri</h3>
+                <h3 className="text-xl font-semibold mb-4 text-navy-900">{t.contact.contact_info}</h3>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <svg className="w-5 h-5 text-navy-700" fill="currentColor" viewBox="0 0 20 20">
@@ -624,12 +790,22 @@ const Contact = ({ currentLang }) => {
               </CardContent>
             </Card>
             
-            <div 
-              className="h-64 bg-cover bg-center rounded-lg"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHw0fHxsYXd5ZXJ8ZW58MHx8fHwxNzU4ODYzMzIxfDA&ixlib=rb-4.1.0&q=85')`
-              }}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle>{t.contact.location}</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4573.126712381559!2d29.01755120304624!3d41.11314703268643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab5bf89700723%3A0xb746023adab01c47!2s42%20Maslak!5e0!3m2!1str!2str!4v1758735568967!5m2!1str!2str"
+                  width="100%" 
+                  height="300" 
+                  style={{border:0}} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade">
+                </iframe>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
@@ -637,44 +813,65 @@ const Contact = ({ currentLang }) => {
   );
 };
 
-// Main App Component
-function App() {
+// Main Website Component
+const MainWebsite = () => {
   const [currentLang, setCurrentLang] = useState(() => {
     const saved = localStorage.getItem('preferred-language');
     return saved || detectLanguage();
   });
   
+  const [siteSettings, setSiteSettings] = useState(null);
+  
   useEffect(() => {
     localStorage.setItem('preferred-language', currentLang);
+    fetchSiteSettings();
   }, [currentLang]);
+
+  const fetchSiteSettings = async () => {
+    try {
+      const response = await axios.get(`${API}/settings`);
+      setSiteSettings(response.data);
+    } catch (error) {
+      console.error('Error fetching site settings:', error);
+    }
+  };
   
   const handleLanguageChange = (lang) => {
     setCurrentLang(lang);
   };
   
   return (
+    <>
+      <Navigation currentLang={currentLang} onLanguageChange={handleLanguageChange} siteSettings={siteSettings} />
+      
+      <Home currentLang={currentLang} />
+      <About currentLang={currentLang} siteSettings={siteSettings} />
+      <Services currentLang={currentLang} />
+      <Blog currentLang={currentLang} />
+      <Contact currentLang={currentLang} />
+      
+      <footer className="bg-navy-900 text-white py-8">
+        <div className="container mx-auto px-4 text-center space-y-2">
+          <p>&copy; 2024 DH Hukuk Bürosu. Tüm hakları saklıdır.</p>
+          <p className="mt-2 text-navy-300">hancer.av.tr</p>
+          <small className="text-navy-400">
+            Designed by <a href="https://burkutsoft.com" target="_blank" rel="noopener" className="text-orange-400 hover:text-orange-300 no-underline">burkutsoft.com</a>
+          </small>
+        </div>
+      </footer>
+    </>
+  );
+};
+
+// Main App Component
+function App() {
+  return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/admin" element={<AdminPanel />} />
-          <Route path="/" element={
-            <>
-              <Navigation currentLang={currentLang} onLanguageChange={handleLanguageChange} />
-              
-              <Home currentLang={currentLang} />
-              <About currentLang={currentLang} />
-              <Services currentLang={currentLang} />
-              <Blog currentLang={currentLang} />
-              <Contact currentLang={currentLang} />
-              
-              <footer className="bg-navy-900 text-white py-8">
-                <div className="container mx-auto px-4 text-center">
-                  <p>&copy; 2024 Av. Deniz Hançer. Tüm hakları saklıdır.</p>
-                  <p className="mt-2 text-navy-300">hancer.av.tr</p>
-                </div>
-              </footer>
-            </>
-          } />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
+          <Route path="/" element={<MainWebsite />} />
         </Routes>
       </BrowserRouter>
     </div>
