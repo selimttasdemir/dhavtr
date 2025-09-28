@@ -93,40 +93,70 @@ input:focus, textarea:focus, select:focus {
   transition: box-shadow 0.3s ease-in-out;
 }
 
-/* Mobile navbar fix */
-.mobile-navbar-bg {
-  background-color: #1e2a5e !important;
+/* Mobile navbar - Clean implementation */
+.mobile-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  height: 100vh !important;
+  width: 320px !important;
   background: #1e2a5e !important;
+  background-color: #1e2a5e !important;
   background-image: none !important;
-  opacity: 1 !important;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5) !important;
   z-index: 9999 !important;
+  transform: translateX(100%) !important;
+  transition: transform 0.3s ease-in-out !important;
 }
 
-.mobile-navbar-bg,
-.mobile-navbar-bg > div,
-.mobile-navbar-bg * {
-  background-color: #1e2a5e !important;
-  background: #1e2a5e !important;
-  background-image: none !important;
+.mobile-sidebar.open {
+  transform: translateX(0) !important;
 }
 
-.mobile-navbar-border {
-  border-bottom-color: #3850a0 !important;
-  border-bottom-width: 1px !important;
-  border-bottom-style: solid !important;
+.mobile-sidebar-header {
+  padding: 24px !important;
+  border-bottom: 1px solid #3850a0 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 }
 
-/* Even more specific targeting */
-div[class*="mobile-navbar-bg"] {
-  background-color: #1e2a5e !important;
-  background: #1e2a5e !important;
-  background-image: none !important;
+.mobile-sidebar-content {
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
 }
 
-/* Force navbar background with highest specificity */
-nav div.mobile-navbar-bg {
-  background-color: #1e2a5e !important;
-  background: #1e2a5e !important;
+.mobile-sidebar-link {
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 18px !important;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid #3850a0 !important;
+  transition: color 0.2s ease !important;
+}
+
+.mobile-sidebar-link:hover {
+  color: #93c5fd !important;
+}
+
+.mobile-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  z-index: 9998 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.mobile-overlay.open {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Line clamp utility */

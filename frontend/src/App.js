@@ -377,17 +377,6 @@ const servicesData = [
   },
   {
     id: 13,
-    title_tr: "Yeniden Yapılandırma & İflas/Konkordato",
-    title_en: "Restructuring & Bankruptcy/Concordat",
-    title_de: "Umstrukturierung & Insolvenz/Konkordato",
-    title_ru: "Реструктуризация и банкротство/конкордат",
-    description_tr: "Finansal sıkıntı yaşayan şirketlerin yeniden yapılandırma süreçlerinde rehberlik ediyoruz. İflas ve konkordato davalarında deneyimli kadromuzla hizmet veriyoruz.",
-    description_en: "We guide companies experiencing financial distress through restructuring processes. We serve with our experienced team in bankruptcy and concordat cases.",
-    description_de: "Wir begleiten Unternehmen in finanziellen Schwierigkeiten durch Umstrukturierungsprozesse. Wir dienen mit unserem erfahrenen Team bei Insolvenz- und Konkordato-Fällen.",
-    description_ru: "Мы направляем компании, испытывающие финансовые затруднения, через процессы реструктуризации."
-  },
-  {
-    id: 14,
     title_tr: "Ceza Hukuku",
     title_en: "Criminal Law",
     title_de: "Strafrecht",
@@ -398,7 +387,7 @@ const servicesData = [
     description_ru: "Мы предоставляем услуги по преступлениям белых воротничков, экономическим преступлениям и коммерческим уголовным делам."
   },
   {
-    id: 15,
+    id: 14,
     title_tr: "Aile Hukuku",
     title_en: "Family Law",
     title_de: "Familienrecht",
@@ -409,7 +398,7 @@ const servicesData = [
     description_ru: "Мы предоставляем услуги по делам о разводе, спорам об опеке, расчетам алиментов и разделу имущества."
   },
   {
-    id: 16,
+    id: 15,
     title_tr: "İdare Hukuku",
     title_en: "Administrative Law",
     title_de: "Verwaltungsrecht",
@@ -420,7 +409,7 @@ const servicesData = [
     description_ru: "Мы предоставляем услуги по административным процедурам, государственным тендерам и административным судебным процессам."
   },
   {
-    id: 17,
+    id: 16,
     title_tr: "Yabancılar Hukuku",
     title_en: "Immigration Law",
     title_de: "Ausländerrecht",
@@ -493,104 +482,90 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
         </button>
       </div>
 
-      {/* Mobile Slide-out Menu */}
-      <div 
-        className={`fixed top-0 right-0 h-full w-80 shadow-2xl transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-        style={{ 
-          backgroundColor: '#1e2a5e',
-          background: '#1e2a5e',
-          backgroundImage: 'none',
-          zIndex: 9999,
-          opacity: 1
-        }}
-      >
-        <div className="flex flex-col h-full">
-          {/* Mobile Menu Header */}
-          <div 
-            className="mobile-navbar-border flex justify-between items-center p-6 border-b"
+      {/* Mobile Sidebar */}
+      <div className={`mobile-sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
+        {/* Header */}
+        <div className="mobile-sidebar-header">
+          <div className="text-xl font-bold text-white">DH Hukuk</div>
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-2 text-white hover:text-gray-300"
+            aria-label="Close menu"
           >
-            <div className="text-xl font-bold text-white">DH Hukuk</div>
-            <button 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2 text-white hover:text-gray-300"
-              aria-label="Close menu"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-          {/* Mobile Menu Links */}
-          <div className="flex flex-col flex-1 p-6 space-y-6">
-            <a 
-              href="#home" 
-              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.nav.home}
-            </a>
-            <a 
-              href="#about" 
-              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.nav.about}
-            </a>
-            <a 
-              href="#services" 
-              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.nav.services}
-            </a>
-            <a 
-              href="#blog" 
-              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.nav.blog}
-            </a>
-            <a 
-              href="#contact" 
-              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t.nav.contact}
-            </a>
+        {/* Content */}
+        <div className="mobile-sidebar-content">
+          <a 
+            href="#home" 
+            className="mobile-sidebar-link"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t.nav.home}
+          </a>
+          <a 
+            href="#about" 
+            className="mobile-sidebar-link"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t.nav.about}
+          </a>
+          <a 
+            href="#services" 
+            className="mobile-sidebar-link"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t.nav.services}
+          </a>
+          <a 
+            href="#blog" 
+            className="mobile-sidebar-link"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t.nav.blog}
+          </a>
+          <a 
+            href="#contact" 
+            className="mobile-sidebar-link"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t.nav.contact}
+          </a>
 
-            {/* Mobile Language Selector */}
-            <div className="pt-4">
-              <label className="text-sm text-gray-300 mb-2 block">Dil / Language</label>
-              <Select value={currentLang} onValueChange={onLanguageChange}>
-                <SelectTrigger 
-                  className="w-full text-white"
-                  style={{ backgroundColor: '#2a3d7f', borderColor: '#4663c1' }}
-                >
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent 
-                  style={{ backgroundColor: '#2a3d7f', borderColor: '#4663c1' }}
-                >
-                  <SelectItem value="tr" className="text-white">🇹🇷 Türkçe</SelectItem>
-                  <SelectItem value="en" className="text-white">🇺🇸 English</SelectItem>
-                  <SelectItem value="de" className="text-white">🇩🇪 Deutsch</SelectItem>
-                  <SelectItem value="ru" className="text-white">🇷🇺 Русский</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          {/* Language Selector */}
+          <div style={{ marginTop: '32px' }}>
+            <label className="text-sm text-gray-300 mb-2 block">Dil / Language</label>
+            <Select value={currentLang} onValueChange={onLanguageChange}>
+              <SelectTrigger 
+                className="w-full"
+                style={{ 
+                  backgroundColor: '#2a3d7f', 
+                  borderColor: '#4663c1',
+                  color: 'white'
+                }}
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="tr">🇹🇷 Türkçe</SelectItem>
+                <SelectItem value="en">🇺🇸 English</SelectItem>
+                <SelectItem value="de">🇩🇪 Deutsch</SelectItem>
+                <SelectItem value="ru">🇷🇺 Русский</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5) !important' }}
-          onClick={() => setIsMobileMenuOpen(false)}
-        ></div>
-      )}
+      {/* Overlay */}
+      <div 
+        className={`mobile-overlay ${isMobileMenuOpen ? 'open' : ''}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
     </nav>
   );
 };
@@ -1155,6 +1130,11 @@ const MainWebsite = () => {
           </div>
           <p>&copy; 2024 DH Hukuk Bürosu. Tüm hakları saklıdır.</p>
           <p className="mt-2 text-navy-300">hancer.av.tr</p>
+          <small className="text-navy-400">
+            www.hancer.av.tr Herhangi bir şekilde hukuki görüş veya dayanak olarak kullanılmamalıdır. İçerikler güncelliğini yitirebilir ve yürürlükte olan mevzuat veya hukuki uygulamaların son halini yansıtmayabilir.Bu nedenle DH HUKUK BÜROSU bu sitede yer alan bilgilerdeki herhangi bir yanlışlık veya eksiklikten veya bu bilgilerin kullanımından doğan sonuçlardan sorumlu tutulamaz, ziyaretçiler sunulan içeriklerin doğru olmadığını veya bu içerikler nedeniyle zarar gördüklerini iddia edemezler. Bu sitedeki tüm bilgi ve dosyaların mülkiyeti DH HUKUK BÜROSU’na ait olup, yazılı iznimiz olmadan kopyalanamaz, çoğaltılamaz ve kullanılmaz. DH HUKUK BÜROSU tarafından açıkça yazılı şekilde izin verilmediği sürece, bu sitede yeni linkler açılması ve/veya bu siteye link yaratılması kesinlikle yasaktır.
+          </small>
+          <br />
+          <br />
           <small className="text-navy-400">
             Designed by <a href="https://burkutsoft.com" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:text-orange-300 no-underline">burkutsoft.com</a>
           </small>
