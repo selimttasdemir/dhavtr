@@ -396,7 +396,7 @@ const SiteSettingsManager = () => {
             <div>
               <label className="block text-sm font-medium mb-2">Hakkımızda - Kurucu Bilgileri</label>
               <Textarea
-                placeholder="Av. Deniz Hançer hakkında bilgiler..."
+                placeholder="Av. Deniz Hançer Özay hakkında bilgiler..."
                 value={settings.about_founder}
                 onChange={(e) => handleChange('about_founder', e.target.value)}
                 rows="8"
@@ -421,10 +421,10 @@ const SiteSettingsManager = () => {
 const EnhancedSiteSettingsManager = () => {
   const [settings, setSettings] = useState({
     logo_url: "",
-    hero_title_tr: "",
-    hero_title_en: "",
-    hero_title_de: "",
-    hero_title_ru: "",
+    hero_title_tr: "DH Hukuk Bürosu",
+    hero_title_en: "DH Law Office",
+    hero_title_de: "DH Rechtsanwaltskanzlei",
+    hero_title_ru: "Юридическое бюро DH",
     hero_subtitle_tr: "",
     hero_subtitle_en: "",
     hero_subtitle_de: "",
@@ -445,9 +445,11 @@ const EnhancedSiteSettingsManager = () => {
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploadingLogo, setUploadingLogo] = useState(false);
+  const [availableLogos, setAvailableLogos] = useState([]);
 
   useEffect(() => {
     fetchSettings();
+    fetchAvailableLogos();
   }, []);
 
   const fetchSettings = async () => {
@@ -482,6 +484,17 @@ const EnhancedSiteSettingsManager = () => {
       console.error("Error fetching settings:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchAvailableLogos = async () => {
+    try {
+      const response = await axios.get(`${API}/logos`);
+      console.log('Available logos:', response.data.logos);
+      setAvailableLogos(response.data.logos || []);
+    } catch (error) {
+      console.error("Error fetching available logos:", error);
+      setAvailableLogos([]);
     }
   };
 
@@ -547,36 +560,75 @@ const EnhancedSiteSettingsManager = () => {
             {/* Logo */}
             <div>
               <label className="block text-sm font-medium mb-2">Logo</label>
-              <div className="space-y-2">
-                <div className="flex space-x-4">
-                  <Input
-                    placeholder="https://example.com/logo.png"
-                    value={settings.logo_url}
-                    onChange={(e) => handleChange('logo_url', e.target.value)}
-                  />
-                  <div className="relative">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleLogoUpload}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                      disabled={uploadingLogo}
+              <div className="space-y-4">
+                {/* Mevcut Logolardan Seç */}
+                {availableLogos.length > 0 && (
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Mevcut Logolardan Seç</label>
+                    <Select 
+                      value={settings.logo_url || "no-logo"} 
+                      onValueChange={(value) => handleChange('logo_url', value === "no-logo" ? "" : value)}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Bir logo seçin..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="no-logo">Logo seçilmedi</SelectItem>
+                        {availableLogos.map((logo, index) => (
+                          <SelectItem key={index} value={`${BACKEND_URL}${logo.url}`}>
+                            <div className="flex items-center space-x-2">
+                              <img 
+                                src={`${BACKEND_URL}${logo.url}`} 
+                                alt={logo.display_name} 
+                                className="h-6 w-6 object-contain"
+                              />
+                              <span>{logo.display_name}</span>
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+                
+                {/* Manuel Logo URL */}
+                <div>
+                  <label className="block text-sm font-medium mb-2">Veya Manual URL Girin</label>
+                  <div className="flex space-x-4">
+                    <Input
+                      placeholder="https://example.com/logo.png"
+                      value={settings.logo_url}
+                      onChange={(e) => handleChange('logo_url', e.target.value)}
                     />
-                    <Button type="button" disabled={uploadingLogo} variant="outline">
-                      {uploadingLogo ? "Yükleniyor..." : "Dosya Seç"}
-                    </Button>
+                    <div className="relative">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleLogoUpload}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        disabled={uploadingLogo}
+                      />
+                      <Button type="button" disabled={uploadingLogo} variant="outline">
+                        {uploadingLogo ? "Yükleniyor..." : "Dosya Seç"}
+                      </Button>
+                    </div>
                   </div>
                 </div>
+                
+                {/* Logo Önizlemesi */}
                 {settings.logo_url && (
-                  <img 
-                    src={settings.logo_url} 
-                    alt="Logo Preview" 
-                    className="h-12 object-contain"
-                    onError={(e) => {e.target.style.display = 'none'}}
-                  />
+                  <div className="border rounded-lg p-4 bg-gray-50">
+                    <label className="block text-sm font-medium mb-2">Logo Önizlemesi</label>
+                    <img 
+                      src={settings.logo_url} 
+                      alt="Logo Preview" 
+                      className="h-16 object-contain bg-white rounded border"
+                      onError={(e) => {e.target.style.display = 'none'}}
+                    />
+                  </div>
                 )}
               </div>
-              <p className="text-sm text-gray-500 mt-1">Logo URL'si girin veya dosya seçin</p>
+              <p className="text-sm text-gray-500 mt-1">Mevcut logolardan birini seçin, URL girin veya yeni dosya yükleyin</p>
             </div>
 
             <Separator />
@@ -1183,7 +1235,7 @@ const AdminPanel = () => {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-navy-900">Admin Paneli - Av. Deniz Hançer</h1>
+          <h1 className="text-2xl font-bold text-navy-900">Admin Paneli - Av. Deniz Hançer Özay</h1>
           <Button variant="outline" onClick={handleLogout}>
             Çıkış Yap
           </Button>

@@ -93,10 +93,45 @@ input:focus, textarea:focus, select:focus {
   transition: box-shadow 0.3s ease-in-out;
 }
 
+/* Mobile navbar fix */
+.mobile-navbar-bg {
+  background-color: #1e2a5e !important;
+  background: #1e2a5e !important;
+  background-image: none !important;
+  opacity: 1 !important;
+  z-index: 9999 !important;
+}
+
+.mobile-navbar-bg,
+.mobile-navbar-bg > div,
+.mobile-navbar-bg * {
+  background-color: #1e2a5e !important;
+  background: #1e2a5e !important;
+  background-image: none !important;
+}
+
+.mobile-navbar-border {
+  border-bottom-color: #3850a0 !important;
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+}
+
+/* Even more specific targeting */
+div[class*="mobile-navbar-bg"] {
+  background-color: #1e2a5e !important;
+  background: #1e2a5e !important;
+  background-image: none !important;
+}
+
+/* Force navbar background with highest specificity */
+nav div.mobile-navbar-bg {
+  background-color: #1e2a5e !important;
+  background: #1e2a5e !important;
+}
+
 /* Line clamp utility */
 .line-clamp-3 {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

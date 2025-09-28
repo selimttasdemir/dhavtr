@@ -396,7 +396,7 @@ async def get_site_settings(db: AsyncSession = Depends(get_database)):
         settings_id = str(uuid.uuid4())
         default_settings = SiteSettingsDB(
             id=settings_id,
-            logo_url="https://via.placeholder.com/200x60/1e3a8a/ffffff?text=DH+HUKUK",
+            logo_url="",
             hero_title_tr="Av. Deniz Hançer",
             hero_title_en="Atty. Deniz Hançer", 
             hero_title_de="RA Deniz Hançer",
@@ -661,12 +661,37 @@ async def upload_file(file: UploadFile = File(...)):
     file_url = f"/uploads/{filename}"
     return {"url": file_url}
 
-# Health check
-@api_router.get("/")
-async def root():
-    return {"message": "Hançer Law Office API is running"}
+# Logo Management
+@api_router.get("/logos")
+async def get_available_logos():
+    """Get list of available logos from uploads directory"""
+    uploads_dir = ROOT_DIR / "uploads"
+    
+    if not uploads_dir.exists():
+        return {"logos": []}
+    
+    allowed_extensions = {'.jpg', '.jpeg', '.png', '.webp', '.svg'}
+    logo_files = []
+    
+    for file_path in uploads_dir.iterdir():
+        if file_path.is_file() and file_path.suffix.lower() in allowed_extensions:
+            logo_files.append({
+                "filename": file_path.name,
+                "url": f"/uploads/{file_path.name}",
+                "display_name": file_path.stem.replace("_", " ").title()
+            })
+    
+    # Sort by filename for consistent ordering
+    logo_files.sort(key=lambda x: x["filename"])
+    
+    return {"logos": logo_files}
 
-# Include the router in the main app
+# Health check
+@app.get("/")
+async def root():
+    return {"message": "Hançer Law Office API is running 🚀"}
+
+# API router
 app.include_router(api_router)
 
 app.add_middleware(
@@ -693,3 +718,10 @@ async def startup_event():
 @app.on_event("shutdown")
 async def shutdown_event():
     logger.info("Application shutting down")
+
+# Main function for running the server directly
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    host = os.environ.get("HOST", "127.0.0.1")
+    uvicorn.run(app, host=host, port=port, reload=True)

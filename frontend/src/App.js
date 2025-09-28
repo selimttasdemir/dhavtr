@@ -3,6 +3,9 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import AdminPanel from "./components/AdminPanel";
+import AvDenizHancerPhoto from "./img/AvDenizHancer.png";
+import avDenizHancer from "./img/avDenizHancerOzay.png";
+
 
 // Import shadcn components
 import { Button } from "./components/ui/button";
@@ -433,6 +436,7 @@ const servicesData = [
 // Navigation Component
 const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
   const t = translations[currentLang];
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   return (
     <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
@@ -451,6 +455,7 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
           )}
         </div>
         
+        {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8">
           <a href="#home" className="text-navy-700 hover:text-navy-900 transition-colors">{t.nav.home}</a>
           <a href="#about" className="text-navy-700 hover:text-navy-900 transition-colors">{t.nav.about}</a>
@@ -459,7 +464,8 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
           <a href="#contact" className="text-navy-700 hover:text-navy-900 transition-colors">{t.nav.contact}</a>
         </div>
         
-        <div className="flex items-center space-x-4">
+        {/* Desktop Language Selector */}
+        <div className="hidden md:flex items-center space-x-4">
           <Select value={currentLang} onValueChange={onLanguageChange}>
             <SelectTrigger className="w-20">
               <SelectValue />
@@ -472,7 +478,117 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
             </SelectContent>
           </Select>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className={`block w-6 h-0.5 bg-navy-900 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`block w-6 h-0.5 bg-navy-900 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`block w-6 h-0.5 bg-navy-900 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
       </div>
+
+      {/* Mobile Slide-out Menu */}
+      <div 
+        className={`fixed top-0 right-0 h-full w-80 shadow-2xl transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        style={{ 
+          backgroundColor: '#1e2a5e',
+          background: '#1e2a5e',
+          backgroundImage: 'none',
+          zIndex: 9999,
+          opacity: 1
+        }}
+      >
+        <div className="flex flex-col h-full">
+          {/* Mobile Menu Header */}
+          <div 
+            className="mobile-navbar-border flex justify-between items-center p-6 border-b"
+          >
+            <div className="text-xl font-bold text-white">DH Hukuk</div>
+            <button 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 text-white hover:text-gray-300"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Mobile Menu Links */}
+          <div className="flex flex-col flex-1 p-6 space-y-6">
+            <a 
+              href="#home" 
+              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t.nav.home}
+            </a>
+            <a 
+              href="#about" 
+              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t.nav.about}
+            </a>
+            <a 
+              href="#services" 
+              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t.nav.services}
+            </a>
+            <a 
+              href="#blog" 
+              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t.nav.blog}
+            </a>
+            <a 
+              href="#contact" 
+              className="mobile-navbar-border text-lg text-white hover:text-gray-300 transition-colors py-2 border-b"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t.nav.contact}
+            </a>
+
+            {/* Mobile Language Selector */}
+            <div className="pt-4">
+              <label className="text-sm text-gray-300 mb-2 block">Dil / Language</label>
+              <Select value={currentLang} onValueChange={onLanguageChange}>
+                <SelectTrigger 
+                  className="w-full text-white"
+                  style={{ backgroundColor: '#2a3d7f', borderColor: '#4663c1' }}
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent 
+                  style={{ backgroundColor: '#2a3d7f', borderColor: '#4663c1' }}
+                >
+                  <SelectItem value="tr" className="text-white">🇹🇷 Türkçe</SelectItem>
+                  <SelectItem value="en" className="text-white">🇺🇸 English</SelectItem>
+                  <SelectItem value="de" className="text-white">🇩🇪 Deutsch</SelectItem>
+                  <SelectItem value="ru" className="text-white">🇷🇺 Русский</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5) !important' }}
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
     </nav>
   );
 };
@@ -482,7 +598,7 @@ const Home = ({ currentLang, siteSettings }) => {
   const t = translations[currentLang];
   
   // Get hero content from settings or fallback to translations
-  const heroTitle = siteSettings?.[`hero_title_${currentLang}`] || t.home?.hero_title || "Av. Deniz Hançer";
+  const heroTitle = siteSettings?.[`hero_title_${currentLang}`] || t.home?.hero_title || "Av. Deniz Hançer Özay";
   const heroSubtitle = siteSettings?.[`hero_subtitle_${currentLang}`] || t.home?.hero_subtitle || "Güvenilir Hukuki Danışmanlık";
   const heroDescription = siteSettings?.[`hero_description_${currentLang}`] || t.home?.hero_description || "Yıllarca deneyim ile müvekkillerimize en kaliteli hukuki hizmetleri sunuyoruz.";
   
@@ -569,7 +685,7 @@ const About = ({ currentLang, siteSettings }) => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxsYXd5ZXJ8ZW58MHx8fHwxNzU4ODYzMzIxfDA&ixlib=rb-4.1.0&q=85"
+                src={avDenizHancer}
                 alt="DH Hukuk Bürosu"
                 className="rounded-lg shadow-lg w-full"
               />
@@ -582,7 +698,7 @@ const About = ({ currentLang, siteSettings }) => {
                     <p key={index}>{paragraph}</p>
                   ))
                 ) : (
-                  <p>DH Hukuk Bürosu, Avukat Deniz HANÇER tarafından kurulmuş olup, İstanbul'da hizmet vermektedir.</p>
+                  <p>DH Hukuk Bürosu, Avukat Deniz HANÇER ÖZAY tarafından kurulmuş olup, İstanbul'da hizmet vermektedir.</p>
                 )}
               </div>
             </div>
@@ -600,15 +716,15 @@ const About = ({ currentLang, siteSettings }) => {
                     <p key={index}>{paragraph}</p>
                   ))
                 ) : (
-                  <p>Deniz HANÇER, hukuk fakültesini onur öğrencisi olarak bitirmiştir.</p>
+                  <p>Deniz HANÇER ÖZAY, hukuk fakültesini onur öğrencisi olarak bitirmiştir.</p>
                 )}
               </div>
             </div>
-            <div className="order-1 md:order-2">
+            <div className="order-1 md:order-2 flex justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwyfHxsYXd5ZXJ8ZW58MHx8fHwxNzU4ODYzMzIxfDA&ixlib=rb-4.1.0&q=85"
-                alt="Av. Deniz Hançer"
-                className="rounded-lg shadow-lg w-full"
+                src={AvDenizHancerPhoto}
+                alt="Av. Deniz Hançer Özay"
+                className="rounded-lg shadow-lg w-96 h-125 object-cover object-top"
               />
             </div>
           </div>
@@ -979,6 +1095,13 @@ const MainWebsite = () => {
     fetchSiteSettings();
   }, [currentLang]);
 
+  // Update favicon when site settings change
+  useEffect(() => {
+    if (siteSettings?.logo_url) {
+      updateFavicon(siteSettings.logo_url);
+    }
+  }, [siteSettings]);
+
   const fetchSiteSettings = async () => {
     try {
       const response = await axios.get(`${API}/settings`);
@@ -986,6 +1109,21 @@ const MainWebsite = () => {
     } catch (error) {
       console.error('Error fetching site settings:', error);
     }
+  };
+
+  const updateFavicon = (logoUrl) => {
+    // Remove existing favicon links
+    const existingLinks = document.querySelectorAll("link[rel*='icon']");
+    existingLinks.forEach(link => link.remove());
+
+    // Create new favicon link
+    const link = document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = logoUrl;
+    
+    // Add to document head
+    document.getElementsByTagName('head')[0].appendChild(link);
   };
   
   const handleLanguageChange = (lang) => {
