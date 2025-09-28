@@ -4,7 +4,8 @@ import { BrowserRouter, Routes, Route, useParams, Link } from "react-router-dom"
 import axios from "axios";
 import AdminPanel from "./components/AdminPanel";
 import AvDenizHancerPhoto from "./img/AvDenizHancer.png";
-import avDenizHancer from "./img/avDenizHancerOzay.png";
+import avDenizHancer from "./img/office.jpeg";
+import slide1Image from "./img/slide1.jpeg";
 
 // Import shadcn components
 import { Button } from "./components/ui/button";
@@ -586,7 +587,7 @@ const Home = ({ currentLang, siteSettings }) => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1589578527966-fdac0f44566c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHxsYXd5ZXJ8ZW58MHx8fHwxNzU4ODYzMzIxfDA&ixlib=rb-4.1.0&q=85')`
+            backgroundImage: `linear-gradient(rgba(30, 58, 138, 0.6), rgba(30, 58, 138, 0.6)), url(${slide1Image})`
           }}
         />
         <div className="relative container mx-auto px-4 text-center text-white">
@@ -664,7 +665,7 @@ const About = ({ currentLang, siteSettings }) => {
               <img
                 src={avDenizHancer}
                 alt="DH Hukuk Bürosu"
-                className="rounded-lg shadow-lg w-full"
+                className="rounded-lg shadow-lg w-96 h-125 object-cover object-top"
               />
             </div>
             <div>
@@ -1022,13 +1023,23 @@ const Contact = ({ currentLang }) => {
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
-                    <span>deniz@hancer.av.tr</span>
+                    <a 
+                      href="mailto:info@hancer.av.tr" 
+                      className="text-navy-700 hover:text-navy-900 transition-colors"
+                    >
+                      info@hancer.av.tr
+                    </a>
                   </div>
                   <div className="flex items-center space-x-3">
                     <svg className="w-5 h-5 text-navy-700" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
-                    <span>05334445566</span>
+                    <a 
+                      href="tel:+905544641552" 
+                      className="text-navy-700 hover:text-navy-900 transition-colors"
+                    >
+                      +90 554 464 1552
+                    </a>
                   </div>
                 </div>
               </CardContent>
@@ -1122,10 +1133,6 @@ const MainWebsite = () => {
           <div className="flex justify-center space-x-4 mb-4">
             <Link to="/admin" className="text-orange-400 hover:text-orange-300 text-sm">
               Admin Panel
-            </Link>
-            <span className="text-navy-400">|</span>
-            <Link to="/blog/test" className="text-orange-400 hover:text-orange-300 text-sm">
-              Test Blog
             </Link>
           </div>
           <p>&copy; 2024 DH Hukuk Bürosu. Tüm hakları saklıdır.</p>
