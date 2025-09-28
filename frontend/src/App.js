@@ -6,7 +6,6 @@ import AdminPanel from "./components/AdminPanel";
 import AvDenizHancerPhoto from "./img/AvDenizHancer.png";
 import avDenizHancer from "./img/avDenizHancerOzay.png";
 
-
 // Import shadcn components
 import { Button } from "./components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
@@ -820,11 +819,13 @@ const Blog = ({ currentLang }) => {
                   <p className="text-gray-600 mb-4 line-clamp-3">
                     {(post[`content_${currentLang}`] || post.content_tr).substring(0, 150)}...
                   </p>
-                  <Link to={`/blog/${post.slug}`} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" size="sm">
-                      {t.blog.read_more}
-                    </Button>
-                  </Link>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
+                  >
+                    {t.blog.read_more}
+                  </Button>
                 </CardContent>
               </Card>
             ))
@@ -1251,9 +1252,9 @@ const PasswordReset = () => {
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
-          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/admin/*" element={<AdminPanel />} />
           <Route path="/admin/reset-password" element={<PasswordReset />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/" element={<MainWebsite />} />
