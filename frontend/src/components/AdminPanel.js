@@ -799,9 +799,7 @@ const PasswordSettings = () => {
     newPassword: '',
     confirmPassword: ''
   });
-  const [forgotEmail, setForgotEmail] = useState('deniz@hancer.av.tr');
   const [isChanging, setIsChanging] = useState(false);
-  const [isSending, setIsSending] = useState(false);
   const [message, setMessage] = useState('');
 
   const handlePasswordChange = async (e) => {
@@ -832,27 +830,6 @@ const PasswordSettings = () => {
       setMessage(error.response?.data?.detail || 'Şifre değiştirme başarısız');
     } finally {
       setIsChanging(false);
-    }
-  };
-
-  const handleForgotPassword = async () => {
-    setIsSending(true);
-    setMessage('');
-
-    try {
-      const response = await axios.post(`${API}/admin/forgot-password`, {
-        email: forgotEmail
-      });
-      
-      if (response.data.reset_link) {
-        setMessage(`Şifre sıfırlama linki: ${response.data.reset_link}`);
-      } else {
-        setMessage('Şifre sıfırlama linki gönderildi (gerçek uygulamada e-posta ile gelecek)');
-      }
-    } catch (error) {
-      setMessage('Şifre sıfırlama başarısız');
-    } finally {
-      setIsSending(false);
     }
   };
 
@@ -901,31 +878,6 @@ const PasswordSettings = () => {
               {isChanging ? "Değiştiriliyor..." : "Şifreyi Değiştir"}
             </Button>
           </form>
-        </CardContent>
-      </Card>
-
-      {/* Forgot Password */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Şifremi Unuttum</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <Input
-              type="email"
-              placeholder="E-posta Adresi"
-              value={forgotEmail}
-              onChange={(e) => setForgotEmail(e.target.value)}
-              disabled
-            />
-            <Button 
-              onClick={handleForgotPassword}
-              variant="outline"
-              disabled={isSending}
-            >
-              {isSending ? "Gönderiliyor..." : "Şifre Sıfırlama Linki Gönder"}
-            </Button>
-          </div>
         </CardContent>
       </Card>
     </div>
