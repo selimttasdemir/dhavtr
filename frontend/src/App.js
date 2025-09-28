@@ -73,6 +73,9 @@ const translations = {
       title: "Blog",
       read_more: "Devamını Oku",
       back_to_blog: "Bloga Geri Dön"
+    },
+    legal: {
+      notice: "www.hancer.av.tr Herhangi bir şekilde hukuki görüş veya dayanak olarak kullanılmamalıdır. İçerikler güncelliğini yitirebilir ve yürürlükte olan mevzuat veya hukuki uygulamaların son halini yansıtmayabilir.Bu nedenle DH HUKUK BÜROSU bu sitede yer alan bilgilerdeki herhangi bir yanlışlık veya eksiklikten veya bu bilgilerin kullanımından doğan sonuçlardan sorumlu tutulamaz, ziyaretçiler sunulan içeriklerin doğru olmadığını veya bu içerikler nedeniyle zarar gördüklerini iddia edemezler. Bu sitedeki tüm bilgi ve dosyaların mülkiyeti DH HUKUK BÜROSU’na ait olup, yazılı iznimiz olmadan kopyalanamaz, çoğaltılamaz ve kullanılmaz. DH HUKUK BÜROSU tarafından açıkça yazılı şekilde izin verilmediği sürece, bu sitede yeni linkler açılması ve/veya bu siteye link yaratılması kesinlikle yasaktır."
     }
   },
   en: {
@@ -126,6 +129,9 @@ const translations = {
       title: "Blog",
       read_more: "Read More",
       back_to_blog: "Back to Blog"
+    },
+    legal: {
+      notice: "www.hancer.av.tr It should not be used as a legal opinion or basis in any way. The contents may be out of date and may not reflect the latest version of the legislation or legal practices in force. Therefore, DH LAW OFFICE cannot be held responsible for any inaccuracies or deficiencies in the information on this site or for the consequences arising from the use of this information. they can't. All information and files on this site belong to DH LAW BÜROSU and cannot be copied, reproduced or used without our written permission. It is strictly forbidden to open new links on this site and/or create a link to this site, unless expressly permitted in writing by DH LAW OFFICE."
     }
   },
   de: {
@@ -179,6 +185,9 @@ const translations = {
       title: "Blog",
       read_more: "Mehr lesen",
       back_to_blog: "Zurück zum Blog"
+    },
+    legal: {
+      notice: "www.hancer.av.tr sollte in keiner Weise als Rechtsberatung oder Grundlage verwendet werden. Die Inhalte können veraltet sein und spiegeln möglicherweise nicht die neueste Version der geltenden Gesetzgebung oder Rechtspraxis wider. Daher kann die DH RECHTSANWALTSKANZLEI nicht für Ungenauigkeiten oder Mängel in den Informationen auf dieser Website oder für die Folgen aus der Verwendung dieser Informationen verantwortlich gemacht werden. Alle Informationen und Dateien auf dieser Website gehören der DH RECHTSANWALTSKANZLEI und dürfen ohne unsere schriftliche Genehmigung nicht kopiert, vervielfältigt oder verwendet werden. Es ist strengstens untersagt, neue Links auf dieser Website zu öffnen und/oder einen Link zu dieser Website zu erstellen, es sei denn, dies ist von der DH RECHTSANWALTSKANZLEI ausdrücklich schriftlich gestattet."
     }
   },
   ru: {
@@ -232,6 +241,9 @@ const translations = {
       title: "Блог",
       read_more: "Читать далее",
       back_to_blog: "Обратно к блогу"
+    },
+    legal: {
+      notice: "www.hancer.av.tr Никоим образом не должен использоваться в качестве юридического заключения или основания. Содержание может быть устаревшим и может не отражать последнюю версию действующего законодательства или юридической практики, поэтому ЮРИДИЧЕСКАЯ КОНТОРА DH не может нести ответственность за какие-либо неточности или недостатки в информации на этом сайте или за последствия, вытекающие из использования этой информации. Вся информация и файлы на этом сайте принадлежат ЮРИДИЧЕСКАЯ КОНТОРА DH и не могут быть скопированы, воспроизведены или использованы без нашего письменного разрешения. Категорически запрещается открывать новые ссылки на этом сайте и/или создавать ссылку на этот сайт, за исключением случаев, когда это прямо разрешено в письменной форме ЮРИДИЧЕСКАЯ КОНТОРА DH."
     }
   }
 };
@@ -1195,8 +1207,8 @@ const MainWebsite = () => {
           <p>&copy; 2024 DH Hukuk Bürosu. Tüm hakları saklıdır.</p>
           <p className="mt-2 text-navy-300">hancer.av.tr</p>
           <br />
-          <small className="text-navy-400">
-            www.hancer.av.tr Herhangi bir şekilde hukuki görüş veya dayanak olarak kullanılmamalıdır. İçerikler güncelliğini yitirebilir ve yürürlükte olan mevzuat veya hukuki uygulamaların son halini yansıtmayabilir.Bu nedenle DH HUKUK BÜROSU bu sitede yer alan bilgilerdeki herhangi bir yanlışlık veya eksiklikten veya bu bilgilerin kullanımından doğan sonuçlardan sorumlu tutulamaz, ziyaretçiler sunulan içeriklerin doğru olmadığını veya bu içerikler nedeniyle zarar gördüklerini iddia edemezler. Bu sitedeki tüm bilgi ve dosyaların mülkiyeti DH HUKUK BÜROSU’na ait olup, yazılı iznimiz olmadan kopyalanamaz, çoğaltılamaz ve kullanılmaz. DH HUKUK BÜROSU tarafından açıkça yazılı şekilde izin verilmediği sürece, bu sitede yeni linkler açılması ve/veya bu siteye link yaratılması kesinlikle yasaktır.
+          <small id="legal-notice" className="text-navy-400">
+            {translations[currentLang].legal.notice}
           </small>
           <br />
           <br />
