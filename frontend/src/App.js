@@ -35,7 +35,7 @@ const translations = {
       why_choose: "Neden Bizi Seçmelisiniz?",
       experience: "Deneyim",
       experience_desc: "Yıllarca deneyim ile müvekkillerimize hizmet veriyoruz",
-      reliability: "Güvenilirlik", 
+      reliability: "Güvenilirlik",
       reliability_desc: "Müvekkillerimizin güvenini kazanmış, güvenilir hukuki danışmanlık",
       expertise: "Uzmanlık",
       expertise_desc: "Farklı hukuk alanlarında uzman kadromuz"
@@ -62,7 +62,7 @@ const translations = {
       send: "Gönder",
       urgency_low: "Düşük",
       urgency_medium: "Orta",
-      urgency_high: "Yüksek", 
+      urgency_high: "Yüksek",
       urgency_urgent: "Acil",
       other: "Diğer",
       contact_info: "İletişim Bilgileri",
@@ -78,7 +78,7 @@ const translations = {
     nav: {
       home: "Home",
       about: "About",
-      services: "Services", 
+      services: "Services",
       blog: "Blog",
       contact: "Contact"
     },
@@ -90,7 +90,7 @@ const translations = {
       experience_desc: "We serve our clients with years of experience",
       reliability: "Reliability",
       reliability_desc: "Reliable legal consulting that has earned the trust of our clients",
-      expertise: "Expertise", 
+      expertise: "Expertise",
       expertise_desc: "Our expert staff in different areas of law"
     },
     about: {
@@ -114,7 +114,7 @@ const translations = {
       message: "Your Message",
       send: "Send",
       urgency_low: "Low",
-      urgency_medium: "Medium", 
+      urgency_medium: "Medium",
       urgency_high: "High",
       urgency_urgent: "Urgent",
       other: "Other",
@@ -132,7 +132,7 @@ const translations = {
       home: "Startseite",
       about: "Über uns",
       services: "Dienstleistungen",
-      blog: "Blog", 
+      blog: "Blog",
       contact: "Kontakt"
     },
     home: {
@@ -247,7 +247,7 @@ const servicesData = [
     id: 1,
     title_tr: "Proje Finansmanı",
     title_en: "Project Financing",
-    title_de: "Projektfinanzierung", 
+    title_de: "Projektfinanzierung",
     title_ru: "Проектное финансирование",
     description_tr: "Proje finansmanı süreçlerinin yürütülmesi noktasında müvekkillerimize danışmanlık sağlıyoruz. Özellikle yatırım noktasında tıkanmış büyük çaplı projelere doğru aksiyon planları ile etkin çözümler getiriyoruz.",
     description_en: "We provide consultancy to our clients in the execution of project financing processes. We bring effective solutions with proper action plans, especially to large-scale projects stuck in investment.",
@@ -425,15 +425,15 @@ const servicesData = [
 const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
   const t = translations[currentLang];
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   return (
     <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           {siteSettings?.logo_url ? (
-            <img 
-              src={siteSettings.logo_url} 
-              alt="DH Hukuk Logo" 
+            <img
+              src={siteSettings.logo_url}
+              alt="DH Hukuk Logo"
               className="h-12 object-contain"
             />
           ) : (
@@ -442,7 +442,7 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
             </div>
           )}
         </div>
-        
+
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-8">
           <a href="#home" className="text-navy-700 hover:text-navy-900 transition-colors">{t.nav.home}</a>
@@ -451,7 +451,7 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
           <a href="#blog" className="text-navy-700 hover:text-navy-900 transition-colors">{t.nav.blog}</a>
           <a href="#contact" className="text-navy-700 hover:text-navy-900 transition-colors">{t.nav.contact}</a>
         </div>
-        
+
         {/* Desktop Language Selector */}
         <div className="hidden md:flex items-center space-x-4">
           <Link to="/admin" className="text-navy-700 hover:text-navy-900 transition-colors text-sm">
@@ -487,7 +487,7 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
         {/* Header */}
         <div className="mobile-sidebar-header">
           <div className="text-xl font-bold text-white">DH Hukuk</div>
-          <button 
+          <button
             onClick={() => setIsMobileMenuOpen(false)}
             className="p-2 text-white hover:text-gray-300"
             aria-label="Close menu"
@@ -500,36 +500,36 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
 
         {/* Content */}
         <div className="mobile-sidebar-content">
-          <a 
-            href="#home" 
+          <a
+            href="#home"
             className="mobile-sidebar-link"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t.nav.home}
           </a>
-          <a 
-            href="#about" 
+          <a
+            href="#about"
             className="mobile-sidebar-link"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t.nav.about}
           </a>
-          <a 
-            href="#services" 
+          <a
+            href="#services"
             className="mobile-sidebar-link"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t.nav.services}
           </a>
-          <a 
-            href="#blog" 
+          <a
+            href="#blog"
             className="mobile-sidebar-link"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t.nav.blog}
           </a>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="mobile-sidebar-link"
             onClick={() => setIsMobileMenuOpen(false)}
           >
@@ -540,10 +540,10 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
           <div style={{ marginTop: '32px' }}>
             <label className="text-sm text-gray-300 mb-2 block">Dil / Language</label>
             <Select value={currentLang} onValueChange={onLanguageChange}>
-              <SelectTrigger 
+              <SelectTrigger
                 className="w-full"
-                style={{ 
-                  backgroundColor: '#2a3d7f', 
+                style={{
+                  backgroundColor: '#2a3d7f',
                   borderColor: '#4663c1',
                   color: 'white'
                 }}
@@ -562,7 +562,7 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
       </div>
 
       {/* Overlay */}
-      <div 
+      <div
         className={`mobile-overlay ${isMobileMenuOpen ? 'open' : ''}`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
@@ -573,17 +573,17 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
 // Home Component
 const Home = ({ currentLang, siteSettings }) => {
   const t = translations[currentLang];
-  
+
   // Get hero content from settings or fallback to translations
   const heroTitle = siteSettings?.[`hero_title_${currentLang}`] || t.home?.hero_title || "Av. Deniz Hançer Özay";
   const heroSubtitle = siteSettings?.[`hero_subtitle_${currentLang}`] || t.home?.hero_subtitle || "Güvenilir Hukuki Danışmanlık";
   const heroDescription = siteSettings?.[`hero_description_${currentLang}`] || t.home?.hero_description || "Yıllarca deneyim ile müvekkillerimize en kaliteli hukuki hizmetleri sunuyoruz.";
-  
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1589578527966-fdac0f44566c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHwxfHxsYXd5ZXJ8ZW58MHx8fHwxNzU4ODYzMzIxfDA&ixlib=rb-4.1.0&q=85')`
@@ -593,8 +593,8 @@ const Home = ({ currentLang, siteSettings }) => {
           <h1 className="text-6xl font-bold mb-4">{heroTitle}</h1>
           <p className="text-2xl mb-6">{heroSubtitle}</p>
           <p className="text-lg mb-8 max-w-3xl mx-auto">{heroDescription}</p>
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="bg-white text-navy-900 hover:bg-gray-100"
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
           >
@@ -651,17 +651,17 @@ const Home = ({ currentLang, siteSettings }) => {
 // About Component
 const About = ({ currentLang, siteSettings }) => {
   const t = translations[currentLang];
-  
+
   return (
     <section id="about" className="py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-navy-900">{t.about.title}</h2>
-        
+
         <div className="space-y-12">
           {/* Company Section */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img 
+              <img
                 src={avDenizHancer}
                 alt="DH Hukuk Bürosu"
                 className="rounded-lg shadow-lg w-full"
@@ -698,7 +698,7 @@ const About = ({ currentLang, siteSettings }) => {
               </div>
             </div>
             <div className="order-1 md:order-2 flex justify-center">
-              <img 
+              <img
                 src={AvDenizHancerPhoto}
                 alt="Av. Deniz Hançer Özay"
                 className="rounded-lg shadow-lg w-96 h-125 object-cover object-top"
@@ -715,7 +715,7 @@ const About = ({ currentLang, siteSettings }) => {
 const Services = ({ currentLang }) => {
   const t = translations[currentLang];
   const [flippedCard, setFlippedCard] = useState(null);
-  
+
   const handleCardClick = (serviceId) => {
     setFlippedCard(flippedCard === serviceId ? null : serviceId);
   };
@@ -726,8 +726,8 @@ const Services = ({ currentLang }) => {
         <h2 className="text-4xl font-bold text-center mb-16 text-navy-900">{t.services.title}</h2>
         <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
           {servicesData.map((service) => (
-            <div 
-              key={service.id} 
+            <div
+              key={service.id}
               className="flip-card h-48 cursor-pointer"
               onClick={() => handleCardClick(service.id)}
             >
@@ -762,11 +762,11 @@ const Services = ({ currentLang }) => {
 const Blog = ({ currentLang }) => {
   const t = translations[currentLang];
   const [posts, setPosts] = useState([]);
-  
+
   useEffect(() => {
     fetchBlogPosts();
   }, []);
-  
+
   const fetchBlogPosts = async () => {
     try {
       const response = await axios.get(`${API}/blog`);
@@ -775,7 +775,7 @@ const Blog = ({ currentLang }) => {
       console.error('Error fetching blog posts:', error);
     }
   };
-  
+
   return (
     <section id="blog" className="py-20">
       <div className="container mx-auto px-4">
@@ -851,14 +851,14 @@ const BlogDetail = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-20">
       <div className="container mx-auto px-4 max-w-4xl">
-        <Button 
-          onClick={() => window.close()} 
+        <Button
+          onClick={() => window.close()}
           variant="outline"
           className="mb-8"
         >
           ← {t.blog.back_to_blog}
         </Button>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="text-3xl text-navy-900">
@@ -896,15 +896,15 @@ const Contact = ({ currentLang }) => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       await axios.post(`${API}/messages`, formData);
       alert('Mesajınız başarıyla gönderildi!');
@@ -919,7 +919,7 @@ const Contact = ({ currentLang }) => {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -1000,8 +1000,8 @@ const Contact = ({ currentLang }) => {
                     required
                     rows="4"
                   />
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="w-full bg-navy-700 hover:bg-navy-800"
                     disabled={isSubmitting}
                   >
@@ -1011,7 +1011,7 @@ const Contact = ({ currentLang }) => {
               </CardContent>
             </Card>
           </div>
-          
+
           <div className="space-y-8">
             <Card>
               <CardContent className="p-6">
@@ -1033,19 +1033,19 @@ const Contact = ({ currentLang }) => {
                 </div>
               </CardContent>
             </Card>
-            
+
             <Card>
               <CardHeader>
                 <CardTitle>{t.contact.location}</CardTitle>
               </CardHeader>
               <CardContent className="p-0">
-                <iframe 
+                <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4573.126712381559!2d29.01755120304624!3d41.11314703268643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab5bf89700723%3A0xb746023adab01c47!2s42%20Maslak!5e0!3m2!1str!2str!4v1758735568967!5m2!1str!2str"
-                  width="100%" 
-                  height="300" 
-                  style={{border:0}} 
-                  allowFullScreen="" 
-                  loading="lazy" 
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="DH Hukuk Bürosu Konum">
                 </iframe>
@@ -1064,9 +1064,9 @@ const MainWebsite = () => {
     const saved = localStorage.getItem('preferred-language');
     return saved || detectLanguage();
   });
-  
+
   const [siteSettings, setSiteSettings] = useState(null);
-  
+
   useEffect(() => {
     localStorage.setItem('preferred-language', currentLang);
     fetchSiteSettings();
@@ -1098,25 +1098,25 @@ const MainWebsite = () => {
     link.type = 'image/x-icon';
     link.rel = 'shortcut icon';
     link.href = logoUrl;
-    
+
     // Add to document head
     document.getElementsByTagName('head')[0].appendChild(link);
   };
-  
+
   const handleLanguageChange = (lang) => {
     setCurrentLang(lang);
   };
-  
+
   return (
     <>
       <Navigation currentLang={currentLang} onLanguageChange={handleLanguageChange} siteSettings={siteSettings} />
-      
+
       <Home currentLang={currentLang} siteSettings={siteSettings} />
       <About currentLang={currentLang} siteSettings={siteSettings} />
       <Services currentLang={currentLang} />
       <Blog currentLang={currentLang} />
       <Contact currentLang={currentLang} />
-      
+
       <footer className="bg-navy-900 text-white py-8">
         <div className="container mx-auto px-4 text-center space-y-2">
           <div className="flex justify-center space-x-4 mb-4">
@@ -1130,6 +1130,7 @@ const MainWebsite = () => {
           </div>
           <p>&copy; 2024 DH Hukuk Bürosu. Tüm hakları saklıdır.</p>
           <p className="mt-2 text-navy-300">hancer.av.tr</p>
+          <br />
           <small className="text-navy-400">
             www.hancer.av.tr Herhangi bir şekilde hukuki görüş veya dayanak olarak kullanılmamalıdır. İçerikler güncelliğini yitirebilir ve yürürlükte olan mevzuat veya hukuki uygulamaların son halini yansıtmayabilir.Bu nedenle DH HUKUK BÜROSU bu sitede yer alan bilgilerdeki herhangi bir yanlışlık veya eksiklikten veya bu bilgilerin kullanımından doğan sonuçlardan sorumlu tutulamaz, ziyaretçiler sunulan içeriklerin doğru olmadığını veya bu içerikler nedeniyle zarar gördüklerini iddia edemezler. Bu sitedeki tüm bilgi ve dosyaların mülkiyeti DH HUKUK BÜROSU’na ait olup, yazılı iznimiz olmadan kopyalanamaz, çoğaltılamaz ve kullanılmaz. DH HUKUK BÜROSU tarafından açıkça yazılı şekilde izin verilmediği sürece, bu sitede yeni linkler açılması ve/veya bu siteye link yaratılması kesinlikle yasaktır.
           </small>
@@ -1155,7 +1156,7 @@ const PasswordReset = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (newPassword !== confirmPassword) {
       setMessage('Şifreler eşleşmiyor');
       return;
@@ -1219,8 +1220,8 @@ const PasswordReset = () => {
                 {message}
               </p>
             )}
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full bg-navy-700 hover:bg-navy-800"
               disabled={isSubmitting}
             >
