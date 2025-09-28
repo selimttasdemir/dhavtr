@@ -465,6 +465,9 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
         
         {/* Desktop Language Selector */}
         <div className="hidden md:flex items-center space-x-4">
+          <Link to="/admin" className="text-navy-700 hover:text-navy-900 transition-colors text-sm">
+            Admin
+          </Link>
           <Select value={currentLang} onValueChange={onLanguageChange}>
             <SelectTrigger className="w-20">
               <SelectValue />
@@ -819,13 +822,11 @@ const Blog = ({ currentLang }) => {
                   <p className="text-gray-600 mb-4 line-clamp-3">
                     {(post[`content_${currentLang}`] || post.content_tr).substring(0, 150)}...
                   </p>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
-                  >
-                    {t.blog.read_more}
-                  </Button>
+                  <Link to={`/blog/${post.slug}`}>
+                    <Button variant="outline" size="sm">
+                      {t.blog.read_more}
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))
@@ -1143,6 +1144,15 @@ const MainWebsite = () => {
       
       <footer className="bg-navy-900 text-white py-8">
         <div className="container mx-auto px-4 text-center space-y-2">
+          <div className="flex justify-center space-x-4 mb-4">
+            <Link to="/admin" className="text-orange-400 hover:text-orange-300 text-sm">
+              Admin Panel
+            </Link>
+            <span className="text-navy-400">|</span>
+            <Link to="/blog/test" className="text-orange-400 hover:text-orange-300 text-sm">
+              Test Blog
+            </Link>
+          </div>
           <p>&copy; 2024 DH Hukuk Bürosu. Tüm hakları saklıdır.</p>
           <p className="mt-2 text-navy-300">hancer.av.tr</p>
           <small className="text-navy-400">
@@ -1252,9 +1262,9 @@ const PasswordReset = () => {
 function App() {
   return (
     <div className="App">
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter>
         <Routes>
-          <Route path="/admin/*" element={<AdminPanel />} />
+          <Route path="/admin" element={<AdminPanel />} />
           <Route path="/admin/reset-password" element={<PasswordReset />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/" element={<MainWebsite />} />
