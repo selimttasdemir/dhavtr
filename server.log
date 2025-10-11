@@ -1,0 +1,129 @@
+[Sat Oct 11 20:56:11 2025] PHP 8.3.6 Development Server (http://127.0.0.1:8000) started
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34866 Accepted
+[Sat Oct 11 20:56:31 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34866 Closing
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34872 Accepted
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34876 Accepted
+[Sat Oct 11 20:56:31 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34872 Closing
+[Sat Oct 11 20:56:31 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34876 Closing
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34880 Accepted
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34882 Accepted
+[Sat Oct 11 20:56:31 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34880 Closing
+[Sat Oct 11 20:56:31 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:31 2025] 127.0.0.1:34882 Closing
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34886 Accepted
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34894 Accepted
+[Sat Oct 11 20:56:33 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34886 Closing
+[Sat Oct 11 20:56:33 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34894 Closing
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34904 Accepted
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34908 Accepted
+[Sat Oct 11 20:56:33 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34904 Closing
+[Sat Oct 11 20:56:33 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34908 Closing
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34918 Accepted
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34928 Accepted
+[Sat Oct 11 20:56:33 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34918 Closing
+[Sat Oct 11 20:56:33 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:33 2025] 127.0.0.1:34928 Closing
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48624 Accepted
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48636 Accepted
+[Sat Oct 11 20:56:50 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48624 Closing
+[Sat Oct 11 20:56:50 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48636 Closing
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48652 Accepted
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48656 Accepted
+[Sat Oct 11 20:56:50 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48652 Closing
+[Sat Oct 11 20:56:50 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48656 Closing
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48670 Accepted
+[Sat Oct 11 20:56:50 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:50 2025] 127.0.0.1:48670 Closing
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48672 Accepted
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48684 Accepted
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48672 Closing
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48684 Closing
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48698 Accepted
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48702 Accepted
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48698 Closing
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48702 Closing
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48716 Accepted
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48716 Closing
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48730 Accepted
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48740 Accepted
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48730 Closing
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48740 Closing
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48744 Accepted
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48744 Closing
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48756 Accepted
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48770 Accepted
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48756 Closing
+[Sat Oct 11 20:56:51 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:56:51 2025] 127.0.0.1:48770 Closing
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59424 Accepted
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59438 Accepted
+[Sat Oct 11 20:57:26 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59424 Closing
+[Sat Oct 11 20:57:26 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59438 Closing
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59454 Accepted
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59466 Accepted
+[Sat Oct 11 20:57:26 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59454 Closing
+[Sat Oct 11 20:57:26 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59466 Closing
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59470 Accepted
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59480 Accepted
+[Sat Oct 11 20:57:26 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59470 Closing
+[Sat Oct 11 20:57:26 2025] PHP Warning:  Unknown: Failed to open stream: No such file or directory in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] PHP Fatal error:  Failed opening required 'index.php' (include_path='.:/usr/share/php') in Unknown on line 0
+[Sat Oct 11 20:57:26 2025] 127.0.0.1:59480 Closing
