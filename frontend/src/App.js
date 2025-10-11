@@ -467,9 +467,6 @@ const Navigation = ({ currentLang, onLanguageChange, siteSettings }) => {
 
         {/* Desktop Language Selector */}
         <div className="hidden md:flex items-center space-x-4">
-          <Link to="/admin" className="text-navy-700 hover:text-navy-900 transition-colors text-sm">
-            Admin
-          </Link>
           <Select value={currentLang} onValueChange={onLanguageChange}>
             <SelectTrigger className="w-20">
               <SelectValue />

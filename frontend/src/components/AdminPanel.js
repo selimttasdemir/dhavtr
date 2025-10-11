@@ -554,6 +554,46 @@ const EnhancedSiteSettingsManager = () => {
     <div className="space-y-6">
       <h3 className="text-2xl font-bold text-navy-900">Site Ayarları</h3>
       
+      {/* Kurumsal Mail Erişimi */}
+      <Card>
+        <CardContent className="p-6">
+          <div style={{
+            backgroundColor: '#dbeafe', 
+            border: '2px solid #3b82f6', 
+            borderRadius: '8px', 
+            padding: '20px', 
+            textAlign: 'center'
+          }}>
+            <h4 style={{color: '#1e40af', fontWeight: 'bold', marginBottom: '12px', fontSize: '18px'}}>
+              📧 Kurumsal Mail Sistemi
+            </h4>
+            <p style={{color: '#374151', marginBottom: '16px'}}>
+              Kurumsal e-posta hesaplarınıza buradan erişebilirsiniz
+            </p>
+            <a 
+              href="https://mail.hancer.av.tr/interface/root#/email/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-block',
+                backgroundColor: '#2563eb',
+                color: 'white',
+                padding: '14px 28px',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseOver={(e) => e.target.style.backgroundColor = '#1d4ed8'}
+              onMouseOut={(e) => e.target.style.backgroundColor = '#2563eb'}
+            >
+              📮 Kurumsal Mailinize Giriş Yapın →
+            </a>
+          </div>
+        </CardContent>
+      </Card>
+      
       <Card>
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
