@@ -1,0 +1,20 @@
+# 1. Python tabanlı hafif imaj
+FROM python:3.13.5-slim
+
+# 2. Çalışma dizini oluştur
+WORKDIR /app
+
+# 3. Gereken dosyaları kopyala
+COPY requirements.txt .
+
+# 4. Bağımlılıkları yükle
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 5. Tüm kodları kopyala
+COPY . .
+
+# 6. Ortam değişkenlerini (gerekirse) yükle
+# ENV ENVIRONMENT=production
+
+# 7. Container açıldığında FastAPI’yi çalıştır
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]

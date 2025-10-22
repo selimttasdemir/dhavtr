@@ -697,9 +697,36 @@ app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=[
+        "http://localhost:3000",      # React development
+        "http://localhost:3001",      # Build test server
+        "http://18.234.174.242",      # Production frontend
+        "https://hancer.av.tr",       # Production domain
+        "https://www.hancer.av.tr",   # Production www
+        "*"  # Allow all origins (remove in production if needed)
+    ],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allow_headers=[
+        "Accept",
+        "Accept-Language", 
+        "Content-Language",
+        "Content-Type",
+        "Authorization",
+        "X-Requested-With",
+        "X-CSRFToken",
+        "Origin",
+        "User-Agent",
+        "DNT",
+        "Cache-Control",
+        "X-Mx-ReqToken",
+        "Keep-Alive",
+        "If-Modified-Since"
+    ],
+    expose_headers=[
+        "Content-Length",
+        "Content-Range", 
+        "X-Content-Range"
+    ]
 )
 
 # Configure logging
@@ -722,6 +749,11 @@ async def shutdown_event():
 # Main function for running the server directly
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8000))
-    host = os.environ.get("HOST", "127.0.0.1")
+    # When running locally or on platforms like Elastic Beanstalk, respect the
+    # PORT and HOST environment variables. Elastic Beanstalk expects the app
+    # to listen on 0.0.0.0:$PORT (default PORT 8080).
+    port = int(os.environ.get("PORT", 8080))
+    host = os.environ.get("HOST", "0.0.0.0")
+    # Keep reload for local development (when running directly). In production
+    # the process manager (gunicorn) will be used via Procfile.
     uvicorn.run(app, host=host, port=port, reload=True)

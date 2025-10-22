@@ -17,8 +17,17 @@ import { Badge } from "./components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./components/ui/dialog";
 import { Separator } from "./components/ui/separator";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Runtime configuration with fallback to environment variables
+const getBackendUrl = () => {
+  return window.APP_CONFIG?.BACKEND_URL || process.env.REACT_APP_BACKEND_URL || "http://18.234.174.242/";
+};
+
+const getApiUrl = () => {
+  return window.APP_CONFIG?.API_URL || process.env.REACT_APP_API_URL || "http://18.234.174.242/api";
+};
+
+const BACKEND_URL = getBackendUrl();
+const API = getApiUrl();
 
 // Multi-language content
 const translations = {
