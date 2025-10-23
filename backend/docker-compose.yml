@@ -16,7 +16,7 @@ services:
     env_file:
       - .env
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/').read()"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://13.61.26.90:8000/').read()"]
       interval: 30s
       timeout: 10s
       retries: 3

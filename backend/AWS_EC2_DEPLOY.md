@@ -139,7 +139,7 @@ Config içeriği:
 ```nginx
 server {
     listen 80;
-    server_name YOUR_DOMAIN_OR_IP;
+    server_name hancer.av.tr;
 
     client_max_body_size 10M;
 
@@ -184,7 +184,7 @@ sudo systemctl restart nginx
 sudo apt install -y certbot python3-certbot-nginx
 
 # SSL sertifikası al (domain varsa)
-sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+sudo certbot --nginx -d hancer.av.tr -d www.hancer.av.tr
 
 # Otomatik yenileme test et
 sudo certbot renew --dry-run

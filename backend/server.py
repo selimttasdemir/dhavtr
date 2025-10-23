@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, File, UploadFile
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 import os
@@ -27,6 +28,11 @@ app = FastAPI()
 
 # Mount static files for uploads
 app.mount("/uploads", StaticFiles(directory=f"{ROOT_DIR}/uploads"), name="uploads")
+
+# Mount frontend build directory
+FRONTEND_BUILD_DIR = ROOT_DIR.parent / "frontend" / "build"
+if FRONTEND_BUILD_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(FRONTEND_BUILD_DIR / "static")), name="static")
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -686,13 +692,33 @@ async def get_available_logos():
     
     return {"logos": logo_files}
 
-# Health check
-@app.get("/")
-async def root():
-    return {"message": "Hançer Law Office API is running 🚀"}
-
-# API router
+# API router - mount before catch-all
 app.include_router(api_router)
+
+# Health check API endpoint
+@app.get("/api/health")
+async def health_check():
+    return {"message": "Hançer Law Office API is running 🚀", "status": "ok"}
+
+# Serve frontend - catch all routes for SPA
+@app.get("/{full_path:path}")
+async def serve_frontend(full_path: str):
+    """Serve the React frontend for all non-API routes"""
+    frontend_build = ROOT_DIR.parent / "frontend" / "build"
+    
+    # If requesting a specific file, try to serve it
+    if full_path and not full_path.startswith("api/"):
+        file_path = frontend_build / full_path
+        if file_path.exists() and file_path.is_file():
+            return FileResponse(file_path)
+    
+    # Otherwise serve index.html (for SPA routing)
+    index_file = frontend_build / "index.html"
+    if index_file.exists():
+        return FileResponse(index_file)
+    
+    # Fallback if frontend not built
+    return {"message": "Frontend not found. Please build the frontend first."}
 
 app.add_middleware(
     CORSMiddleware,
@@ -700,7 +726,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",      # React development
         "http://localhost:3001",      # Build test server
-        "http://18.234.174.242",      # Production frontend
+        "http://13.61.26.90",      # Production frontend
         "https://hancer.av.tr",       # Production domain
         "https://www.hancer.av.tr",   # Production www
         "*"  # Allow all origins (remove in production if needed)
@@ -754,6 +780,7 @@ if __name__ == "__main__":
     # to listen on 0.0.0.0:$PORT (default PORT 8080).
     port = int(os.environ.get("PORT", 8080))
     host = os.environ.get("HOST", "0.0.0.0")
+    print(f"Starting server on {host}:{port}")
     # Keep reload for local development (when running directly). In production
     # the process manager (gunicorn) will be used via Procfile.
-    uvicorn.run(app, host=host, port=port, reload=True)
+    uvicorn.run(app, host=host, port=port, reload=False)

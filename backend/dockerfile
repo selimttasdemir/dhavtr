@@ -27,7 +27,7 @@ EXPOSE 8000
 
 # 10. Health check ekle (AWS için önemli)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/').read()" || exit 1
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://13.61.26.90:8000/').read()" || exit 1
 
 # 11. Production için Gunicorn ile çalıştır (uvicorn worker'ları ile)
 # AWS Elastic Beanstalk PORT ortam değişkenini kullanır (genellikle 8080)

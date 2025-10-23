@@ -19,11 +19,11 @@ import { Separator } from "./components/ui/separator";
 
 // Runtime configuration with fallback to environment variables
 const getBackendUrl = () => {
-  return window.APP_CONFIG?.BACKEND_URL || process.env.REACT_APP_BACKEND_URL || "http://18.234.174.242/";
+  return window.APP_CONFIG?.BACKEND_URL || process.env.REACT_APP_BACKEND_URL || "http://13.61.26.90:8080/";
 };
 
 const getApiUrl = () => {
-  return window.APP_CONFIG?.API_URL || process.env.REACT_APP_API_URL || "http://18.234.174.242/api";
+  return window.APP_CONFIG?.API_URL || process.env.REACT_APP_API_URL || "http://13.61.26.90:8080/api";
 };
 
 const BACKEND_URL = getBackendUrl();

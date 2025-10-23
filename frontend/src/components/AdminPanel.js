@@ -12,11 +12,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 // Runtime configuration with fallback to environment variables
 const getBackendUrl = () => {
-  return window.APP_CONFIG?.BACKEND_URL || process.env.REACT_APP_BACKEND_URL || "http://18.234.174.242/";
+  return window.APP_CONFIG?.BACKEND_URL || process.env.REACT_APP_BACKEND_URL || "http://13.61.26.90/";
 };
 
 const getApiUrl = () => {
-  return window.APP_CONFIG?.API_URL || process.env.REACT_APP_API_URL || "http://18.234.174.242/api";
+  return window.APP_CONFIG?.API_URL || process.env.REACT_APP_API_URL || "http://13.61.26.90/api";
 };
 
 const BACKEND_URL = getBackendUrl();
