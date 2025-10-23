@@ -6,17 +6,17 @@ services:
     container_name: hancer-backend
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - "8080:8080"
     volumes:
       - ./uploads:/app/uploads
       - ./hancer_law.db:/app/hancer_law.db
     environment:
       - ENVIRONMENT=production
-      - PORT=8000
+      - PORT=8080
     env_file:
       - .env
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://13.61.26.90:8000/').read()"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/api/health').read()"]
       interval: 30s
       timeout: 10s
       retries: 3
