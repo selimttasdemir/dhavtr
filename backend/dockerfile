@@ -1,10 +1,10 @@
-# 1. Python tabanlı hafif imaj
+# 1. Hafif Python imajı
 FROM python:3.13.5-slim
 
-# 2. Çalışma dizini oluştur
+# 2. Çalışma dizini
 WORKDIR /app
 
-# 3. Python buffer'ları devre dışı bırak (log'lar anında görünsün)
+# 3. Logların anında görünmesi için
 ENV PYTHONUNBUFFERED=1
 
 # 4. Production mode
@@ -16,19 +16,26 @@ COPY requirements.txt .
 # 6. Bağımlılıkları yükle
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 7. Tüm kodları kopyala
+# 7. Uygulama dosyalarını kopyala
 COPY . .
 
-# 8. uploads dizini için izinler
+# 8. Upload klasörü oluştur
 RUN mkdir -p /app/uploads && chmod 755 /app/uploads
 
-# 9. Port bilgisi (dokümantasyon için)
-EXPOSE 8080
+# 9. Port (dışa açık port)
+EXPOSE 8000
 
-# 10. Health check ekle (AWS için önemli)
+# 10. Healthcheck (AWS ECS ve Docker denetimi için)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8080/api/health').read()" || exit 1
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health').read()" || exit 1
 
-# 11. Production için Gunicorn ile çalıştır (uvicorn worker'ları ile)
-# AWS Elastic Beanstalk PORT ortam değişkenini kullanır (genellikle 8080)
-CMD gunicorn server:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-8080} --timeout 120 --graceful-timeout 30 --keep-alive 5 --access-logfile - --error-logfile -
+# 11. Gunicorn ile FastAPI’yi başlat
+CMD gunicorn server:app \
+    --workers 4 \
+    --worker-class uvicorn.workers.UvicornWorker \
+    --bind 0.0.0.0:8000 \
+    --timeout 120 \
+    --graceful-timeout 30 \
+    --keep-alive 5 \
+    --access-logfile - \
+    --error-logfile -
