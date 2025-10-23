@@ -4,17 +4,31 @@ FROM python:3.13.5-slim
 # 2. Çalışma dizini oluştur
 WORKDIR /app
 
-# 3. Gereken dosyaları kopyala
+# 3. Python buffer'ları devre dışı bırak (log'lar anında görünsün)
+ENV PYTHONUNBUFFERED=1
+
+# 4. Production mode
+ENV ENVIRONMENT=production
+
+# 5. Gereken dosyaları kopyala
 COPY requirements.txt .
 
-# 4. Bağımlılıkları yükle
+# 6. Bağımlılıkları yükle
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Tüm kodları kopyala
+# 7. Tüm kodları kopyala
 COPY . .
 
-# 6. Ortam değişkenlerini (gerekirse) yükle
-# ENV ENVIRONMENT=production
+# 8. uploads dizini için izinler
+RUN mkdir -p /app/uploads && chmod 755 /app/uploads
 
-# 7. Container açıldığında FastAPI’yi çalıştır
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
+# 9. Port bilgisi (dokümantasyon için)
+EXPOSE 8000
+
+# 10. Health check ekle (AWS için önemli)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8000/').read()" || exit 1
+
+# 11. Production için Gunicorn ile çalıştır (uvicorn worker'ları ile)
+# AWS Elastic Beanstalk PORT ortam değişkenini kullanır (genellikle 8080)
+CMD gunicorn server:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-8000} --timeout 120 --graceful-timeout 30 --keep-alive 5 --access-logfile - --error-logfile -
